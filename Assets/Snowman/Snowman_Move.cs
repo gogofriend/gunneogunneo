@@ -7,6 +7,7 @@ public class Snowman_Move : MonoBehaviour
     float startTime;
     float finishTime;
     bool reverse;
+    bool time;
 
     Vector3 pos;
     float step = 2;
@@ -15,6 +16,7 @@ public class Snowman_Move : MonoBehaviour
     {
         pos = transform.position;
         reverse = false;
+        time = false;
     }
 
     // Update is called once per frame
@@ -73,13 +75,38 @@ public class Snowman_Move : MonoBehaviour
                 reverse = false;
             }
         }
+        if (time)
+        {
+
+            startTime += Time.deltaTime;
+
+            GameObject[] objArray = GameObject.FindGameObjectsWithTag("Car");
+            GameObject[] objArray2 = GameObject.FindGameObjectsWithTag("Car2");
+
+            for (int i = 0; i < objArray.Length; i++)
+                objArray[i].gameObject.transform.position -= (new Vector3(10, 0, 0) * Time.deltaTime);
+            for (int i = 0; i < objArray2.Length; i++)
+                objArray2[i].gameObject.transform.position += (new Vector3(10, 0, 0) * Time.deltaTime);
+
+            if (startTime >= finishTime)
+            {
+                time = false;
+            }
+        }
+
+        if (pos.x > 20)
+            pos.x = 20;
+        if (pos.x < -25)
+            pos.x = -25;
+
+
+
 
         transform.position = pos;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("T");
         if (other.gameObject.name == "reverse")
         {
             startTime = Time.time;
@@ -89,17 +116,28 @@ public class Snowman_Move : MonoBehaviour
             Destroy(other.gameObject, 0);
 
         }
+        if (other.gameObject.name == "time")
+        {
+
+            startTime = Time.time;
+            finishTime = startTime + 3f;
+            time = true;
+
+            Destroy(other.gameObject, 0);
+
+        }
+
     }
 
     private void OnGUI()
     {
         GUIStyle style = new GUIStyle();
-        style.fontSize = 30;
+        style.fontSize = 60;
         style.normal.textColor = Color.black;
 
         //Enemy[] scripts = FindObjectsOfType<Enemy>();
-        string str = "     X 3";
+        string str = "      X 3";
 
-        GUI.Label(new Rect(10, 10, 100, 20), str, style);
+        GUI.Label(new Rect(25, 30, 100, 20), str, style);
     }
 }
