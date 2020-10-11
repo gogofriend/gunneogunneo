@@ -107,6 +107,8 @@ GameObject:
   - component: {fileID: 1741200335652959533}
   - component: {fileID: 1741200335652959532}
   - component: {fileID: 1741200335652959535}
+  - component: {fileID: -9185305013352934372}
+  - component: {fileID: 3338153218710175685}
   m_Layer: 0
   m_Name: Bus4
   m_TagString: Untagged
@@ -203,6 +205,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-9185305013352934372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741200335652959534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9a3efafc1360a848a8f57349885ba13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3338153218710175685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741200335652959534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf1b57796eba794588c041987e5339c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1957211679331695125
 GameObject:
   m_ObjectHideFlags: 0
