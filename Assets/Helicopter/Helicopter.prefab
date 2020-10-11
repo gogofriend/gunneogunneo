@@ -522,6 +522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6676991135725468715}
+  - component: {fileID: -6043693755641963777}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -545,6 +546,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6043693755641963777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8215241760191932687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bda2e685eb7a7d46a6c5a6308553404, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item1: {fileID: 8138603119289986652, guid: ef6ff96ca9b39f74989d04159de1622a, type: 3}
+  item2: {fileID: 612553342544599031, guid: c4eee80696b1c894ab51a336862ec776, type: 3}
+  item3: {fileID: 5937869182946656410, guid: 74119c0a18b287d46ae53cf53e6623c5, type: 3}
+  item4: {fileID: 834846257115310963, guid: 0535f476a54720443b5d6882adaf621f, type: 3}
 --- !u!1 &8559588813217298109
 GameObject:
   m_ObjectHideFlags: 0

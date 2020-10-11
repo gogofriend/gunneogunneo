@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\SceneScript\quit.cs" />
+    <Compile Include="Assets\Car_control.cs" />
     <Compile Include="Assets\Snowman\Snowman_Move.cs" />
     <Compile Include="Assets\SceneScript\yes2.cs" />
     <Compile Include="Assets\Bus\Car_Move2.cs" />
@@ -67,7 +68,9 @@
     <Compile Include="Assets\CameraScript\cameramove.cs" />
     <Compile Include="Assets\SceneScript\ranking.cs" />
     <Compile Include="Assets\Bus\Car_Move.cs" />
-    <Compile Include="Assets\Car_control.cs" />
+    <Compile Include="Assets\Car_contorl2.cs" />
+    <Compile Include="Assets\Helicopter\Helicopter.cs" />
+    <Compile Include="Assets\item\item_drop.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

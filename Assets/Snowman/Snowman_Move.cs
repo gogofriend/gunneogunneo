@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Snowman_Move : MonoBehaviour
 {
@@ -100,7 +101,8 @@ public class Snowman_Move : MonoBehaviour
             pos.x = -25;
 
 
-
+        if (pos.z >= 2)
+            SceneManager.LoadScene("Continue");
 
         transform.position = pos;
     }
