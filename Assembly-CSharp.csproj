@@ -56,7 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Snowman\Snowman_Move.cs" />
-    <Compile Include="Assets\test.cs" />
+    <Compile Include="Assets\SceneScript\start.cs" />
+    <Compile Include="Assets\SceneScript\ranking.cs" />
+    <Compile Include="Assets\SceneScript\quit.cs" />
+    <Compile Include="Assets\SceneScript\back.cs" />
+    <Compile Include="Assets\SceneScript\yes.cs" />
+    <Compile Include="Assets\SceneScript\no.cs" />
+    <Compile Include="Assets\SceneScript\intro.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
