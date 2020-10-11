@@ -91,4 +91,15 @@ public class Snowman_Move : MonoBehaviour
         }
     }
 
+    private void OnGUI()
+    {
+        GUIStyle style = new GUIStyle();
+        style.fontSize = 50;
+        style.normal.textColor = Color.black;
+
+        //Enemy[] scripts = FindObjectsOfType<Enemy>();
+        string str = "목숨 =";
+
+        GUI.Label(new Rect(10, 10, 100, 20), str, style);
+    }
 }
