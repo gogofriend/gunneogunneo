@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Car2
   - Car
+  - Tree
   layers:
   - Default
   - TransparentFX
