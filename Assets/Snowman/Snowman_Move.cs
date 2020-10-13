@@ -136,7 +136,7 @@ public class Snowman_Move : MonoBehaviour
             car_col = false;
         }
 
-        if (tree_col == true || hole_col == true)
+        if (tree_col == true)
         {
             if (arrow == 1)
             {
@@ -155,6 +155,26 @@ public class Snowman_Move : MonoBehaviour
                 pos += new Vector3(1, 0, 0);
             }
             tree_col = false;
+        }
+
+        if (hole_col == true)
+        {
+            if (arrow == 1)
+            {
+                pos -= new Vector3(0, 0, 1);
+            }
+            if (arrow == 2)
+            {
+                pos += new Vector3(0, 0, 1);
+            }
+            if (arrow == 3)
+            {
+                pos -= new Vector3(1, 0, 0);
+            }
+            if (arrow == 4)
+            {
+                pos += new Vector3(1, 0, 0);
+            }
             hole_col = false;
         }
 
@@ -288,6 +308,11 @@ public class Snowman_Move : MonoBehaviour
                 car_col = false;
                 timer = 0;
             }
+            Destroy(other.gameObject, 0);
+        }
+        if (other.gameObject.tag == "bomb")
+        {
+            SceneManager.LoadScene("GameOver");
         }
 
         if (other.gameObject.tag == "hole")
@@ -304,8 +329,6 @@ public class Snowman_Move : MonoBehaviour
             treepos = other.gameObject.transform.position;
 
         }
-
-
     }
 
     private void OnGUI()
