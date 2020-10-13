@@ -26,6 +26,12 @@ public class Snowman_Move : MonoBehaviour
     Vector3 pos;
     Collider obc;
     float step = 2;
+
+    AudioSource audio;
+    public AudioClip jump;
+    AudioSource audio1;
+    public AudioClip cnt_time;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +46,14 @@ public class Snowman_Move : MonoBehaviour
         carnum = 0;
         timer = 0;
         waitingTime = 2;
+
+        audio = gameObject.AddComponent<AudioSource>();
+        audio.clip = jump;
+        audio.loop = false;
+
+        audio1 = gameObject.AddComponent<AudioSource>();
+        audio1.clip = cnt_time;
+        audio1.loop = false;
     }
 
     // Update is called once per frame
@@ -140,19 +154,19 @@ public class Snowman_Move : MonoBehaviour
         {
             if (arrow == 1)
             {
-                pos -= new Vector3(0, 0, 1);
+                pos -= new Vector3(0, 0, 2);
             }
             if (arrow == 2)
             {
-                pos += new Vector3(0, 0, 1);
+                pos += new Vector3(0, 0, 2);
             }
             if (arrow == 3)
             {
-                pos -= new Vector3(1, 0, 0);
+                pos -= new Vector3(2, 0, 0);
             }
             if (arrow == 4)
             {
-                pos += new Vector3(1, 0, 0);
+                pos += new Vector3(2, 0, 0);
             }
             tree_col = false;
         }
@@ -161,22 +175,23 @@ public class Snowman_Move : MonoBehaviour
         {
             if (arrow == 1)
             {
-                pos -= new Vector3(0, 0, 1);
+                pos -= new Vector3(0, 0, 2);
             }
             if (arrow == 2)
             {
-                pos += new Vector3(0, 0, 1);
+                pos += new Vector3(0, 0, 2);
             }
             if (arrow == 3)
             {
-                pos -= new Vector3(1, 0, 0);
+                pos -= new Vector3(2, 0, 0);
             }
             if (arrow == 4)
             {
-                pos += new Vector3(1, 0, 0);
+                pos += new Vector3(2, 0, 0);
             }
             hole_col = false;
         }
+
 
         if (reverse == false)
         {
@@ -236,7 +251,7 @@ public class Snowman_Move : MonoBehaviour
         }
         if (time)
         {
-
+            audio1.Play();
             startTime += Time.deltaTime;
 
             GameObject[] objArray = GameObject.FindGameObjectsWithTag("Car");
@@ -263,7 +278,22 @@ public class Snowman_Move : MonoBehaviour
             SceneManager.LoadScene("Continue");
         }
 
-
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            audio.Play();
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            audio.Play();
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            audio.Play();
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            audio.Play();
+        }
 
         transform.position = pos;
     }

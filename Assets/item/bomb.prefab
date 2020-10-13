@@ -111,3 +111,4 @@ MonoBehaviour:
   v: 0
   isFalling: 1
   hole: {fileID: 2637668783481577501, guid: 40d7963cb27464246a938827436107f5, type: 3}
+  burst: {fileID: 8300000, guid: 6395a538aee22b64592c25123232967b, type: 3}

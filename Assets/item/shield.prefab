@@ -91,7 +91,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612553342544599031}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -110,3 +110,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   v: 0
   isFalling: 1
+  hole: {fileID: 0}

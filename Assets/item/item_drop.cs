@@ -10,9 +10,14 @@ public class item_drop : MonoBehaviour
     public bool isFalling = true; //공의 상태가 떨어지고 있는지 상태인지 확인
     public GameObject hole = null;
     Vector3 hole_pos;
+
+    AudioSource audio;
+    public AudioClip burst;
     void Start()
     {
-
+        audio = gameObject.AddComponent<AudioSource>();
+        audio.clip = burst;
+        audio.loop = false;
     }
     void Update()
     {
@@ -33,6 +38,7 @@ public class item_drop : MonoBehaviour
                     hole_pos.y = 0.1f;
                     Hole.transform.position = hole_pos;
                     Hole.transform.parent = null;
+                    audio.Play();
                 }
             }
             if (v <= 0)   //속도<=0 이면
