@@ -19,6 +19,7 @@ public class Snowman_Move : MonoBehaviour
     int carnum;
     float timer;
     int waitingTime;
+    string groundnum;
 
     Vector3 holepos;
     Vector3 treepos;
@@ -44,8 +45,7 @@ public class Snowman_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-      
+        //휘청이지 않게 함
         if (arrow == 1)
         {
             gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
@@ -101,15 +101,38 @@ public class Snowman_Move : MonoBehaviour
             if (arrow == 4 || carnum == 2)
             {
                 pos -= new Vector3(1, 0, 0);
-            }
-            */
-            timer += Time.deltaTime;
-            if (timer > waitingTime)
-            {
-                car_col = false;
-                timer = 0;
-            }
+            }*/
+            pos -= new Vector3(1, 0, 0);
+            //죽으면 가까운 그라운드로
+            if (gameObject.transform.position.z >= -98 && gameObject.transform.position.z < -90)
+                pos = new Vector3(0, 1, -98);
+            if (gameObject.transform.position.z >= -90 && gameObject.transform.position.z < -86)
+                pos = new Vector3(0, 1, -90);
+            if (gameObject.transform.position.z >= -86 && gameObject.transform.position.z < -82)
+                pos = new Vector3(0, 1, -86);
+            if (gameObject.transform.position.z >= -82 && gameObject.transform.position.z < -73)
+                pos = new Vector3(0, 1, -82);
+            if (gameObject.transform.position.z >= -73 && gameObject.transform.position.z < -66)
+                pos = new Vector3(0, 1, -73);
+            if (gameObject.transform.position.z >= -66 && gameObject.transform.position.z < -58)
+                pos = new Vector3(0, 1, -66);
+            if (gameObject.transform.position.z >= -58 && gameObject.transform.position.z < -50)
+                pos = new Vector3(0, 1, -58);
+            if (gameObject.transform.position.z >= -50 && gameObject.transform.position.z < -37)
+                pos = new Vector3(0, 1, -50);
+            if (gameObject.transform.position.z >= -37 && gameObject.transform.position.z < -28)
+                pos = new Vector3(0, 1, -37);
+            if (gameObject.transform.position.z >= -28 && gameObject.transform.position.z < -20)
+                pos = new Vector3(0, 1, -28);
+            if (gameObject.transform.position.z >= -20 && gameObject.transform.position.z < -10)
+                pos = new Vector3(0, 1, -20);
+            if (gameObject.transform.position.z >= -10 && gameObject.transform.position.z < -6)
+                pos = new Vector3(0, 1, -10);
+            if (gameObject.transform.position.z >= -6 && gameObject.transform.position.z < 0)
+                pos = new Vector3(0, 1, -6);
+
             heart--;
+            Debug.Log("하트감소, 하트개수 : " + heart);
             car_col = false;
         }
 
@@ -224,9 +247,20 @@ public class Snowman_Move : MonoBehaviour
 
         transform.position = pos;
     }
-
     void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Car2")
+        {
+            car_col = true;
+            carnum = 2;
+            Debug.Log("car2");
+        }
+        if (other.gameObject.tag == "Car")
+        {
+            car_col = true;
+            carnum = 1;
+            Debug.Log("car");
+        }
         if (other.gameObject.tag == "reverse")
         {
             startTime = Time.time;
@@ -246,6 +280,15 @@ public class Snowman_Move : MonoBehaviour
             Destroy(other.gameObject, 0);
 
         }
+        if (other.gameObject.tag == "shield")
+        {
+            timer += Time.deltaTime;
+            if (timer > waitingTime)
+            {
+                car_col = false;
+                timer = 0;
+            }
+        }
 
         if (other.gameObject.tag == "hole")
         {
@@ -261,21 +304,9 @@ public class Snowman_Move : MonoBehaviour
             treepos = other.gameObject.transform.position;
 
         }
-        if (other.gameObject.tag == "Car2")
-        {
-            car_col = true;
-            carnum = 2;
-            Debug.Log("car2");
-        }
-        if (other.gameObject.tag == "Car")
-        {
-            car_col = true;
-            carnum = 1;
-            Debug.Log("car");
-        }
+
+
     }
-
-
 
     private void OnGUI()
     {
