@@ -11,6 +11,7 @@ public class Snowman_Move : MonoBehaviour
     float finishTime;
     bool reverse;
     bool time;
+    bool hole_col;
     bool tree_col;
     bool car_col;
     int heart;
@@ -19,6 +20,7 @@ public class Snowman_Move : MonoBehaviour
     float timer;
     int waitingTime;
 
+    Vector3 holepos;
     Vector3 treepos;
     Vector3 pos;
     Collider obc;
@@ -29,6 +31,7 @@ public class Snowman_Move : MonoBehaviour
         pos = transform.position;
         reverse = false;
         time = false;
+        hole_col = false;
         tree_col = false;
         car_col = false;
         heart = 3;
@@ -110,7 +113,7 @@ public class Snowman_Move : MonoBehaviour
             car_col = false;
         }
 
-        if (tree_col == true)
+        if (tree_col == true || hole_col == true)
         {
             if (arrow == 1)
             {
@@ -129,6 +132,7 @@ public class Snowman_Move : MonoBehaviour
                 pos += new Vector3(1, 0, 0);
             }
             tree_col = false;
+            hole_col = false;
         }
 
         if (reverse == false)
@@ -211,6 +215,12 @@ public class Snowman_Move : MonoBehaviour
         if (pos.x < -25)
             pos.x = -25;
 
+        if (pos.z > 1)
+        {
+            SceneManager.LoadScene("Continue");
+        }
+
+
 
         transform.position = pos;
     }
@@ -236,6 +246,14 @@ public class Snowman_Move : MonoBehaviour
             Destroy(other.gameObject, 0);
 
         }
+
+        if (other.gameObject.tag == "hole")
+        {
+            hole_col = true;
+            Debug.Log("hole");
+            holepos = other.gameObject.transform.position;
+        }
+
         if (other.gameObject.tag == "Tree")
         {
             tree_col = true;

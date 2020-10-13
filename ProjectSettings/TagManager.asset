@@ -11,6 +11,7 @@ TagManager:
   - reverse
   - shield
   - time
+  - hole
   layers:
   - Default
   - TransparentFX
