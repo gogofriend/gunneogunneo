@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4429792249801861061}
   m_Layer: 0
   m_Name: time
-  m_TagString: Untagged
+  m_TagString: time
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,3 +125,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652ece1bae609f1449f20939bf7e3c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  v: 0
+  isFalling: 1

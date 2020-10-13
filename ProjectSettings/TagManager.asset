@@ -7,6 +7,10 @@ TagManager:
   - Car2
   - Car
   - Tree
+  - bomb
+  - reverse
+  - shield
+  - time
   layers:
   - Default
   - TransparentFX

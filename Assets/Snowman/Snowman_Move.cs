@@ -41,6 +41,8 @@ public class Snowman_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+      
         if (arrow == 1)
         {
             gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
@@ -215,7 +217,7 @@ public class Snowman_Move : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "reverse")
+        if (other.gameObject.tag == "reverse")
         {
             startTime = Time.time;
             finishTime = startTime + 3f;
@@ -224,7 +226,7 @@ public class Snowman_Move : MonoBehaviour
             Destroy(other.gameObject, 0);
 
         }
-        if (other.gameObject.name == "time")
+        if (other.gameObject.tag == "time")
         {
 
             startTime = Time.time;
@@ -263,9 +265,6 @@ public class Snowman_Move : MonoBehaviour
         style.fontSize = 60;
         style.normal.textColor = Color.black;
 
-        //Enemy[] scripts = FindObjectsOfType<Enemy>();
         string str = "      X " + heart;
-
-        GUI.Label(new Rect(25, 30, 100, 20), str, style);
     }
 }
