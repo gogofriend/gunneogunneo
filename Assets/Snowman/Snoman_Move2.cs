@@ -290,10 +290,10 @@ public class Snoman_Move2 : MonoBehaviour
         }
    
 
-        if (pos.x > 20)
-            pos.x = 20;
-        if (pos.x < -25)
-            pos.x = -25;
+        if (pos.x > 10)
+            pos.x = 10;
+        if (pos.x < -14)
+            pos.x = -14;
 
         if (pos.z > 250)
         {
