@@ -26,6 +26,9 @@ public class Snoman_Move2 : MonoBehaviour
     Vector3 pos;
     Collider obc;
     float step = 2;
+
+    AudioSource audio;
+    public AudioClip jump;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,10 @@ public class Snoman_Move2 : MonoBehaviour
         carnum = 0;
         timer = 0;
         waitingTime = 2;
+
+        audio = gameObject.AddComponent<AudioSource>();
+        audio.clip = jump;
+        audio.loop = false;
     }
 
     // Update is called once per frame
@@ -158,25 +165,45 @@ public class Snoman_Move2 : MonoBehaviour
             car_col = false;
         }
 
-        if (tree_col == true || hole_col == true)
+        if (tree_col == true)
         {
             if (arrow == 1)
             {
-                pos -= new Vector3(0, 0, 1);
+                pos -= new Vector3(0, 0, 2);
             }
             if (arrow == 2)
             {
-                pos += new Vector3(0, 0, 1);
+                pos += new Vector3(0, 0, 2);
             }
             if (arrow == 3)
             {
-                pos -= new Vector3(1, 0, 0);
+                pos -= new Vector3(2, 0, 0);
             }
             if (arrow == 4)
             {
-                pos += new Vector3(1, 0, 0);
+                pos += new Vector3(2, 0, 0);
             }
             tree_col = false;
+        }
+
+        if (hole_col == true)
+        {
+            if (arrow == 1)
+            {
+                pos -= new Vector3(0, 0, 2);
+            }
+            if (arrow == 2)
+            {
+                pos += new Vector3(0, 0, 2);
+            }
+            if (arrow == 3)
+            {
+                pos -= new Vector3(2, 0, 0);
+            }
+            if (arrow == 4)
+            {
+                pos += new Vector3(2, 0, 0);
+            }
             hole_col = false;
         }
 
@@ -263,10 +290,25 @@ public class Snoman_Move2 : MonoBehaviour
 
         if (pos.z > 252)
         {
-            SceneManager.LoadScene("Continue");
+            SceneManager.LoadScene("Ranking");
         }
 
-
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            audio.Play();
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            audio.Play();
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            audio.Play();
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            audio.Play();
+        }
 
         transform.position = pos;
     }
@@ -311,6 +353,12 @@ public class Snoman_Move2 : MonoBehaviour
                 car_col = false;
                 timer = 0;
             }
+            Destroy(other.gameObject, 0);
+        }
+
+        if (other.gameObject.tag == "bomb")
+        {
+            SceneManager.LoadScene("GameOver");
         }
 
         if (other.gameObject.tag == "hole")
@@ -338,5 +386,6 @@ public class Snoman_Move2 : MonoBehaviour
         style.normal.textColor = Color.black;
 
         string str = "      X " + heart;
+        GUI.Label(new Rect(25, 30, 100, 20), str, style);
     }
 }

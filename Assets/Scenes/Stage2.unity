@@ -8582,6 +8582,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Snowman
       objectReference: {fileID: 0}
+    - target: {fileID: 7013667018829698715, guid: 7ff9fa5f9c7365040b2adc64c4255944, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7013667018829698716, guid: 7ff9fa5f9c7365040b2adc64c4255944, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.2
@@ -8658,6 +8662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4096df7a9552b946b4381fc5f8ddae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jump: {fileID: 8300000, guid: f2e9267cab83c2649ab0d64ce3194639, type: 3}
 --- !u!1001 &935201817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11910,7 +11915,7 @@ MonoBehaviour:
   player: {fileID: 928031019}
   offsetX: 0
   offsetY: 8
-  offsetZ: -9
+  offsetZ: -7
 --- !u!1001 &1329080219
 PrefabInstance:
   m_ObjectHideFlags: 0
