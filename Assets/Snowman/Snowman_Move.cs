@@ -20,7 +20,7 @@ public class Snowman_Move : MonoBehaviour
     float timer;
     int waitingTime;
     string groundnum;
-    
+    bool shield;
     Vector3 holepos;
     Vector3 treepos;
     Vector3 pos;
@@ -40,10 +40,11 @@ public class Snowman_Move : MonoBehaviour
         pos = transform.position;
         reverse = false;
         time = false;
+        shield = false;
         hole_col = false;
         tree_col = false;
         car_col = false;
-        heart = 300;
+        heart = 3;
         arrow = 0;
         carnum = 0;
         timer = 0;
@@ -85,73 +86,86 @@ public class Snowman_Move : MonoBehaviour
         if (car_col == true)
         {
 
-            /*
-            if (arrow == 1 || carnum == 1)
-            {
-                pos -= new Vector3(1, 0, 1);
-            }
-            if (arrow == 1 || carnum == 2)
-            {
-                pos -= new Vector3(-1, 0, 1);
-            }
-            if (arrow == 2 || carnum == 1)
-            {
-                pos += new Vector3(1, 0, 1);
-            }
-            if (arrow == 2 || carnum == 2)
-            {
-                pos += new Vector3(-1, 0, 1);
-            }
-            if (arrow == 3 || carnum == 1)
-            {
-                pos -= new Vector3(-1, 0, 0);
-            }
-            if (arrow == 3 || carnum == 2)
-            {
-                pos -= new Vector3(1, 0, 0);
-            }
-            if (arrow == 4 || carnum == 1)
-            {
-                pos += new Vector3(1, 0, 0);
-            }
-            if (arrow == 4 || carnum == 2)
-            {
-                pos -= new Vector3(1, 0, 0);
-            }*/
-            pos -= new Vector3(1, 0, 0);
-            //죽으면 가까운 그라운드로
-            if (gameObject.transform.position.z >= -98 && gameObject.transform.position.z < -90)
-                pos = new Vector3(0, 1, -98);
-            if (gameObject.transform.position.z >= -90 && gameObject.transform.position.z < -86)
-                pos = new Vector3(0, 1, -90);
-            if (gameObject.transform.position.z >= -86 && gameObject.transform.position.z < -82)
-                pos = new Vector3(0, 1, -86);
-            if (gameObject.transform.position.z >= -82 && gameObject.transform.position.z < -73)
-                pos = new Vector3(0, 1, -82);
-            if (gameObject.transform.position.z >= -73 && gameObject.transform.position.z < -66)
-                pos = new Vector3(0, 1, -73);
-            if (gameObject.transform.position.z >= -66 && gameObject.transform.position.z < -58)
-                pos = new Vector3(0, 1, -66);
-            if (gameObject.transform.position.z >= -58 && gameObject.transform.position.z < -50)
-                pos = new Vector3(0, 1, -58);
-            if (gameObject.transform.position.z >= -50 && gameObject.transform.position.z < -37)
-                pos = new Vector3(0, 1, -50);
-            if (gameObject.transform.position.z >= -37 && gameObject.transform.position.z < -28)
-                pos = new Vector3(0, 1, -37);
-            if (gameObject.transform.position.z >= -28 && gameObject.transform.position.z < -20)
-                pos = new Vector3(0, 1, -28);
-            if (gameObject.transform.position.z >= -20 && gameObject.transform.position.z < -10)
-                pos = new Vector3(0, 1, -20);
-            if (gameObject.transform.position.z >= -10 && gameObject.transform.position.z < -6)
-                pos = new Vector3(0, 1, -10);
-            if (gameObject.transform.position.z >= -6 && gameObject.transform.position.z < 0)
-                pos = new Vector3(0, 1, -6);
+           if(shield)
+            { 
+                  
+                    pos -= new Vector3(1, 0, 0);
+                    //죽으면 가까운 그라운드로
+                    if (gameObject.transform.position.z >= -98 && gameObject.transform.position.z < -90)
+                        pos = new Vector3(0, 1, -98);
+                    if (gameObject.transform.position.z >= -90 && gameObject.transform.position.z < -86)
+                        pos = new Vector3(0, 1, -90);
+                    if (gameObject.transform.position.z >= -86 && gameObject.transform.position.z < -82)
+                        pos = new Vector3(0, 1, -86);
+                    if (gameObject.transform.position.z >= -82 && gameObject.transform.position.z < -73)
+                        pos = new Vector3(0, 1, -82);
+                    if (gameObject.transform.position.z >= -73 && gameObject.transform.position.z < -66)
+                        pos = new Vector3(0, 1, -73);
+                    if (gameObject.transform.position.z >= -66 && gameObject.transform.position.z < -58)
+                        pos = new Vector3(0, 1, -66);
+                    if (gameObject.transform.position.z >= -58 && gameObject.transform.position.z < -50)
+                        pos = new Vector3(0, 1, -58);
+                    if (gameObject.transform.position.z >= -50 && gameObject.transform.position.z < -37)
+                        pos = new Vector3(0, 1, -50);
+                    if (gameObject.transform.position.z >= -37 && gameObject.transform.position.z < -28)
+                        pos = new Vector3(0, 1, -37);
+                    if (gameObject.transform.position.z >= -28 && gameObject.transform.position.z < -20)
+                        pos = new Vector3(0, 1, -28);
+                    if (gameObject.transform.position.z >= -20 && gameObject.transform.position.z < -10)
+                        pos = new Vector3(0, 1, -20);
+                    if (gameObject.transform.position.z >= -10 && gameObject.transform.position.z < -6)
+                        pos = new Vector3(0, 1, -10);
+                    if (gameObject.transform.position.z >= -6 && gameObject.transform.position.z < 0)
+                        pos = new Vector3(0, 1, -6);
 
-            heart--;
-            Debug.Log("하트감소, 하트개수 : " + heart);
+
+                }
+            if (shield == false)
+            {
+                pos -= new Vector3(1, 0, 0);
+                //죽으면 가까운 그라운드로
+                if (gameObject.transform.position.z >= -98 && gameObject.transform.position.z < -90)
+                    pos = new Vector3(0, 1, -98);
+                if (gameObject.transform.position.z >= -90 && gameObject.transform.position.z < -86)
+                    pos = new Vector3(0, 1, -90);
+                if (gameObject.transform.position.z >= -86 && gameObject.transform.position.z < -82)
+                    pos = new Vector3(0, 1, -86);
+                if (gameObject.transform.position.z >= -82 && gameObject.transform.position.z < -73)
+                    pos = new Vector3(0, 1, -82);
+                if (gameObject.transform.position.z >= -73 && gameObject.transform.position.z < -66)
+                    pos = new Vector3(0, 1, -73);
+                if (gameObject.transform.position.z >= -66 && gameObject.transform.position.z < -58)
+                    pos = new Vector3(0, 1, -66);
+                if (gameObject.transform.position.z >= -58 && gameObject.transform.position.z < -50)
+                    pos = new Vector3(0, 1, -58);
+                if (gameObject.transform.position.z >= -50 && gameObject.transform.position.z < -37)
+                    pos = new Vector3(0, 1, -50);
+                if (gameObject.transform.position.z >= -37 && gameObject.transform.position.z < -28)
+                    pos = new Vector3(0, 1, -37);
+                if (gameObject.transform.position.z >= -28 && gameObject.transform.position.z < -20)
+                    pos = new Vector3(0, 1, -28);
+                if (gameObject.transform.position.z >= -20 && gameObject.transform.position.z < -10)
+                    pos = new Vector3(0, 1, -20);
+                if (gameObject.transform.position.z >= -10 && gameObject.transform.position.z < -6)
+                    pos = new Vector3(0, 1, -10);
+                if (gameObject.transform.position.z >= -6 && gameObject.transform.position.z < 0)
+                    pos = new Vector3(0, 1, -6);
+
+                heart--;
+                Debug.Log("하트감소, 하트개수 : " + heart);
+            }
+
             car_col = false;
         }
+        if (shield)
+        {
+            if (startTime >= finishTime)
+            {
+                startTime += Time.deltaTime;
 
+                shield = false;
+            }
+        }
         if (tree_col == true)
         {
             if (arrow == 1)
@@ -362,12 +376,10 @@ public class Snowman_Move : MonoBehaviour
         }
         if (other.gameObject.tag == "shield")
         {
-            timer += Time.deltaTime;
-            if (timer > waitingTime)
-            {
-                car_col = false;
-                timer = 0;
-            }
+            startTime = Time.time;
+            finishTime = startTime + 3f;
+            shield = true;
+
             Destroy(other.gameObject, 0);
         }
         if (other.gameObject.tag == "bomb")

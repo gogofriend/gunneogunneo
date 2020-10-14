@@ -25,6 +25,7 @@ public class Snoman_Move2 : MonoBehaviour
     public Text scoreData3;
     public Text scoreData4;
     public Text scoreData5;
+    bool shield;
 
     Vector3 holepos;
     Vector3 treepos;
@@ -45,6 +46,7 @@ public class Snoman_Move2 : MonoBehaviour
         hole_col = false;
         tree_col = false;
         car_col = false;
+        shield = false;
         heart = 300;
         arrow = 0;
         carnum = 0;
@@ -82,85 +84,110 @@ public class Snoman_Move2 : MonoBehaviour
 
         if (car_col == true)
         {
-            heart--;
-            Debug.Log("하트감소, 하트개수 : " + heart);
-            /*
-            if (arrow == 1 || carnum == 1)
+
+            if (shield)
             {
-                pos -= new Vector3(1, 0, 1);
-            }
-            if (arrow == 1 || carnum == 2)
-            {
-                pos -= new Vector3(-1, 0, 1);
-            }
-            if (arrow == 2 || carnum == 1)
-            {
-                pos += new Vector3(1, 0, 1);
-            }
-            if (arrow == 2 || carnum == 2)
-            {
-                pos += new Vector3(-1, 0, 1);
-            }
-            if (arrow == 3 || carnum == 1)
-            {
-                pos -= new Vector3(-1, 0, 0);
-            }
-            if (arrow == 3 || carnum == 2)
-            {
+                startTime += Time.deltaTime;
                 pos -= new Vector3(1, 0, 0);
+                //죽으면 가까운 그라운드로
+                if (gameObject.transform.position.z >= 52 && gameObject.transform.position.z < 58)
+                    pos = new Vector3(-6, 1.099988f, 52);
+                if (gameObject.transform.position.z >= 58 && gameObject.transform.position.z < 69)
+                    pos = new Vector3(-6, 1.099988f, 58);
+                if (gameObject.transform.position.z >= 69 && gameObject.transform.position.z < 83)
+                    pos = new Vector3(-6, 1.099988f, 69);
+                if (gameObject.transform.position.z >= 83 && gameObject.transform.position.z < 96)
+                    pos = new Vector3(-6, 1.099988f, 83);
+                if (gameObject.transform.position.z >= 96 && gameObject.transform.position.z < 102)
+                    pos = new Vector3(-6, 1.099988f, 96);
+                if (gameObject.transform.position.z >= 102 && gameObject.transform.position.z < 110)
+                    pos = new Vector3(-6, 1.099988f, 102);
+                if (gameObject.transform.position.z >= 110 && gameObject.transform.position.z < 116)
+                    pos = new Vector3(-6, 1.099988f, 110);
+                if (gameObject.transform.position.z >= 116 && gameObject.transform.position.z < 122)
+                    pos = new Vector3(-6, 1.099988f, 116);
+                if (gameObject.transform.position.z >= 122 && gameObject.transform.position.z < 136)
+                    pos = new Vector3(-6, 1.099988f, 122);
+                if (gameObject.transform.position.z >= 136 && gameObject.transform.position.z < 142)
+                    pos = new Vector3(-6, 1.099988f, 136);
+                if (gameObject.transform.position.z >= 142 && gameObject.transform.position.z < 152)
+                    pos = new Vector3(-6, 1.099988f, 142);
+                if (gameObject.transform.position.z >= 152 && gameObject.transform.position.z < 162)
+                    pos = new Vector3(-6, 1.099988f, 152);
+                if (gameObject.transform.position.z >= 162 && gameObject.transform.position.z < 180)
+                    pos = new Vector3(-6, 1.099988f, 162);
+                if (gameObject.transform.position.z >= 180 && gameObject.transform.position.z < 192)
+                    pos = new Vector3(-6, 1.099988f, 180);
+                if (gameObject.transform.position.z >= 192 && gameObject.transform.position.z < 202)
+                    pos = new Vector3(-6, 1.099988f, 192);
+                if (gameObject.transform.position.z >= 202 && gameObject.transform.position.z < 212)
+                    pos = new Vector3(-6, 1.099988f, 202);
+                if (gameObject.transform.position.z >= 212 && gameObject.transform.position.z < 224)
+                    pos = new Vector3(-6, 1.099988f, 212);
+                if (gameObject.transform.position.z >= 224 && gameObject.transform.position.z < 232)
+                    pos = new Vector3(-6, 1.099988f, 224);
+                if (gameObject.transform.position.z >= 232 && gameObject.transform.position.z < 240)
+                    pos = new Vector3(-6, 1.099988f, 232);
+                if (gameObject.transform.position.z >= 240 && gameObject.transform.position.z < 244)
+                    pos = new Vector3(-6, 1.099988f, 240);
+                if (gameObject.transform.position.z >= 244 && gameObject.transform.position.z < 250)
+                    pos = new Vector3(-6, 1.099988f, 244);
+
+                if (startTime >= finishTime)
+                {
+                    shield = false;
+                }
             }
-            if (arrow == 4 || carnum == 1)
+            if (shield == false)
             {
-                pos += new Vector3(1, 0, 0);
-            }
-            if (arrow == 4 || carnum == 2)
-            {
+                heart--;
+                Debug.Log("하트감소, 하트개수 : " + heart);
+
                 pos -= new Vector3(1, 0, 0);
-            }*/
-            pos -= new Vector3(1, 0, 0);
-            //죽으면 가까운 그라운드로
-            if (gameObject.transform.position.z >= 52 && gameObject.transform.position.z < 58)
-                pos = new Vector3(-6, 1.099988f, 52);
-            if (gameObject.transform.position.z >= 58 && gameObject.transform.position.z < 69)
-                pos = new Vector3(-6, 1.099988f, 58);
-            if (gameObject.transform.position.z >= 69 && gameObject.transform.position.z < 83)
-                pos = new Vector3(-6, 1.099988f, 69);
-            if (gameObject.transform.position.z >= 83 && gameObject.transform.position.z < 96)
-                pos = new Vector3(-6, 1.099988f, 83);
-            if (gameObject.transform.position.z >= 96 && gameObject.transform.position.z < 102)
-                pos = new Vector3(-6, 1.099988f, 96);
-            if (gameObject.transform.position.z >= 102 && gameObject.transform.position.z < 110)
-                pos = new Vector3(-6, 1.099988f, 102);
-            if (gameObject.transform.position.z >= 110 && gameObject.transform.position.z < 116)
-                pos = new Vector3(-6, 1.099988f, 110);
-            if (gameObject.transform.position.z >= 116 && gameObject.transform.position.z < 122)
-                pos = new Vector3(-6, 1.099988f, 116);
-            if (gameObject.transform.position.z >= 122 && gameObject.transform.position.z < 136)
-                pos = new Vector3(-6, 1.099988f, 122);
-            if (gameObject.transform.position.z >= 136 && gameObject.transform.position.z < 142)
-                pos = new Vector3(-6, 1.099988f, 136);
-            if (gameObject.transform.position.z >= 142 && gameObject.transform.position.z < 152)
-                pos = new Vector3(-6, 1.099988f, 142);
-            if (gameObject.transform.position.z >= 152 && gameObject.transform.position.z < 162)
-                pos = new Vector3(-6, 1.099988f, 152);
-            if (gameObject.transform.position.z >= 162 && gameObject.transform.position.z < 180)
-                pos = new Vector3(-6, 1.099988f, 162);
-            if (gameObject.transform.position.z >= 180 && gameObject.transform.position.z < 192)
-                pos = new Vector3(-6, 1.099988f, 180);
-            if (gameObject.transform.position.z >= 192 && gameObject.transform.position.z < 202)
-                pos = new Vector3(-6, 1.099988f, 192);
-            if (gameObject.transform.position.z >= 202 && gameObject.transform.position.z < 212)
-                pos = new Vector3(-6, 1.099988f, 202);
-            if (gameObject.transform.position.z >= 212 && gameObject.transform.position.z < 224)
-                pos = new Vector3(-6, 1.099988f, 212);
-            if (gameObject.transform.position.z >= 224 && gameObject.transform.position.z < 232)
-                pos = new Vector3(-6, 1.099988f, 224);
-            if (gameObject.transform.position.z >= 232 && gameObject.transform.position.z < 240)
-                pos = new Vector3(-6, 1.099988f, 232);
-            if (gameObject.transform.position.z >= 240 && gameObject.transform.position.z < 244)
-                pos = new Vector3(-6, 1.099988f, 240);
-            if (gameObject.transform.position.z >= 244 && gameObject.transform.position.z < 250)
-                pos = new Vector3(-6, 1.099988f, 244);
+                //죽으면 가까운 그라운드로
+                if (gameObject.transform.position.z >= 52 && gameObject.transform.position.z < 58)
+                    pos = new Vector3(-6, 1.099988f, 52);
+                if (gameObject.transform.position.z >= 58 && gameObject.transform.position.z < 69)
+                    pos = new Vector3(-6, 1.099988f, 58);
+                if (gameObject.transform.position.z >= 69 && gameObject.transform.position.z < 83)
+                    pos = new Vector3(-6, 1.099988f, 69);
+                if (gameObject.transform.position.z >= 83 && gameObject.transform.position.z < 96)
+                    pos = new Vector3(-6, 1.099988f, 83);
+                if (gameObject.transform.position.z >= 96 && gameObject.transform.position.z < 102)
+                    pos = new Vector3(-6, 1.099988f, 96);
+                if (gameObject.transform.position.z >= 102 && gameObject.transform.position.z < 110)
+                    pos = new Vector3(-6, 1.099988f, 102);
+                if (gameObject.transform.position.z >= 110 && gameObject.transform.position.z < 116)
+                    pos = new Vector3(-6, 1.099988f, 110);
+                if (gameObject.transform.position.z >= 116 && gameObject.transform.position.z < 122)
+                    pos = new Vector3(-6, 1.099988f, 116);
+                if (gameObject.transform.position.z >= 122 && gameObject.transform.position.z < 136)
+                    pos = new Vector3(-6, 1.099988f, 122);
+                if (gameObject.transform.position.z >= 136 && gameObject.transform.position.z < 142)
+                    pos = new Vector3(-6, 1.099988f, 136);
+                if (gameObject.transform.position.z >= 142 && gameObject.transform.position.z < 152)
+                    pos = new Vector3(-6, 1.099988f, 142);
+                if (gameObject.transform.position.z >= 152 && gameObject.transform.position.z < 162)
+                    pos = new Vector3(-6, 1.099988f, 152);
+                if (gameObject.transform.position.z >= 162 && gameObject.transform.position.z < 180)
+                    pos = new Vector3(-6, 1.099988f, 162);
+                if (gameObject.transform.position.z >= 180 && gameObject.transform.position.z < 192)
+                    pos = new Vector3(-6, 1.099988f, 180);
+                if (gameObject.transform.position.z >= 192 && gameObject.transform.position.z < 202)
+                    pos = new Vector3(-6, 1.099988f, 192);
+                if (gameObject.transform.position.z >= 202 && gameObject.transform.position.z < 212)
+                    pos = new Vector3(-6, 1.099988f, 202);
+                if (gameObject.transform.position.z >= 212 && gameObject.transform.position.z < 224)
+                    pos = new Vector3(-6, 1.099988f, 212);
+                if (gameObject.transform.position.z >= 224 && gameObject.transform.position.z < 232)
+                    pos = new Vector3(-6, 1.099988f, 224);
+                if (gameObject.transform.position.z >= 232 && gameObject.transform.position.z < 240)
+                    pos = new Vector3(-6, 1.099988f, 232);
+                if (gameObject.transform.position.z >= 240 && gameObject.transform.position.z < 244)
+                    pos = new Vector3(-6, 1.099988f, 240);
+                if (gameObject.transform.position.z >= 244 && gameObject.transform.position.z < 250)
+                    pos = new Vector3(-6, 1.099988f, 244);
+            }
             /*
             timer += Time.deltaTime;
             if (timer > waitingTime)
@@ -408,12 +435,10 @@ public class Snoman_Move2 : MonoBehaviour
         }
         if (other.gameObject.tag == "shield")
         {
-            timer += Time.deltaTime;
-            if (timer > waitingTime)
-            {
-                car_col = false;
-                timer = 0;
-            }
+            startTime = Time.time;
+            finishTime = startTime + 3f;
+            shield = true;
+
             Destroy(other.gameObject, 0);
         }
 
