@@ -17122,7 +17122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timelimit: 50
-  timert: {fileID: 0}
+  timert: {fileID: 1898804721}
 --- !u!1001 &1901152639
 PrefabInstance:
   m_ObjectHideFlags: 0
