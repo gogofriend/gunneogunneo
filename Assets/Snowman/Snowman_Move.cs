@@ -367,7 +367,7 @@ public class Snowman_Move : MonoBehaviour
         style.fontSize = 60;
         style.normal.textColor = Color.black;
 
-        //Enemy[] scripts = FindObjectsOfType<Enemy>();
+
         string str = "      X " + heart;
 
         GUI.Label(new Rect(25, 30, 100, 20), str, style);

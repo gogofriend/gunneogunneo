@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        timelimit = 50;
     }
 
     // Update is called once per frame
@@ -29,6 +29,6 @@ public class Timer : MonoBehaviour
             }
         }
 
-        timert.text = Mathf.FloorToInt(timelimit).ToString();
+        timert.text = "Time  " + Mathf.FloorToInt(timelimit).ToString();
     }
 }
