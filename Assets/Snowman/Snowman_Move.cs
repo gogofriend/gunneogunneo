@@ -43,7 +43,7 @@ public class Snowman_Move : MonoBehaviour
         hole_col = false;
         tree_col = false;
         car_col = false;
-        heart = 3;
+        heart = 300;
         arrow = 0;
         carnum = 0;
         timer = 0;
@@ -270,8 +270,8 @@ public class Snowman_Move : MonoBehaviour
             }
         }
 
-        if (pos.x > 20)
-            pos.x = 20;
+        if (pos.x > 200)
+            pos.x = 200;
         if (pos.x < -25)
             pos.x = -25;
 

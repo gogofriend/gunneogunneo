@@ -45,7 +45,7 @@ public class Snoman_Move2 : MonoBehaviour
         hole_col = false;
         tree_col = false;
         car_col = false;
-        heart = 3;
+        heart = 300;
         arrow = 0;
         carnum = 0;
         timer = 0;
@@ -295,7 +295,7 @@ public class Snoman_Move2 : MonoBehaviour
         if (pos.x < -25)
             pos.x = -25;
 
-        if (pos.z > 252)
+        if (pos.z > 250)
         {
             Score_Mng.score += Mathf.FloorToInt(Timer.timelimit);
             Score_Mng.Save();

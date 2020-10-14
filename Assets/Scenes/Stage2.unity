@@ -8684,6 +8684,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4096df7a9552b946b4381fc5f8ddae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreData1: {fileID: 4260169638655569871, guid: 242d4eabc92fba2438d48dfefb87794a, type: 3}
+  scoreData2: {fileID: 7317925363536709966, guid: 48d89e18e0182694398fe7ea1bbc445c, type: 3}
+  scoreData3: {fileID: 929553821363371549, guid: d7737e418af5dd94ea6d483cc2e9f2f5, type: 3}
+  scoreData4: {fileID: 6175661027198129428, guid: dfbbfd5394c49c9489950d71d2613130, type: 3}
+  scoreData5: {fileID: 1581220207090041587, guid: f5d8401aa95278244a05289b5636eecb, type: 3}
   jump: {fileID: 8300000, guid: f2e9267cab83c2649ab0d64ce3194639, type: 3}
   heli: {fileID: 11207144}
 --- !u!1001 &935201817
@@ -9499,7 +9504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1006584582}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -0, y: -3.000015, z: 252.47}
+  m_LocalPosition: {x: -0, y: 0.09997237, z: 252}
   m_LocalScale: {x: 100, y: 0.39999998, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -17201,7 +17206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 042eccfb716506e4c810534603548501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timelimit: 50
   timert: {fileID: 1898804721}
 --- !u!1001 &1901152639
 PrefabInstance:

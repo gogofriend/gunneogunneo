@@ -7,8 +7,7 @@ using UnityEngine.UI;
 public class inputranking : MonoBehaviour
 {
     // Start is called before the first frame update
-    public InputField inputField;
-    public static string fieldText;
+    public InputField InputText;
     public void onStart()
     {
         SceneManager.LoadScene("Ranking");
@@ -17,6 +16,10 @@ public class inputranking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
 
+    private void Test(Text text)
+    {
+        text.text = InputText.text;
     }
 }
