@@ -7,8 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Snoman_Move2 : MonoBehaviour
 {
-    float startTime;
-    float finishTime;
+
     bool reverse;
     bool time;
     bool hole_col;
@@ -25,6 +24,13 @@ public class Snoman_Move2 : MonoBehaviour
     public Text scoreData3;
     public Text scoreData4;
     public Text scoreData5;
+    float startTime1;
+    float startTime2;
+    float startTime3;
+
+    float finishTime1;
+    float finishTime2;
+    float finishTime3;
     bool shield;
 
     Vector3 holepos;
@@ -52,6 +58,13 @@ public class Snoman_Move2 : MonoBehaviour
         carnum = 0;
         timer = 0;
         waitingTime = 2;
+        startTime1 = 0;
+        startTime2 = 0;
+        startTime3 = 0;
+
+        finishTime1 = 0;
+        finishTime2 = 0;
+        finishTime3 = 0;
 
         audio = gameObject.AddComponent<AudioSource>();
         audio.clip = jump;
@@ -87,7 +100,7 @@ public class Snoman_Move2 : MonoBehaviour
 
             if (shield)
             {
-                startTime += Time.deltaTime;
+               
                 pos -= new Vector3(1, 0, 0);
                 //죽으면 가까운 그라운드로
                 if (gameObject.transform.position.z >= 52 && gameObject.transform.position.z < 58)
@@ -133,10 +146,6 @@ public class Snoman_Move2 : MonoBehaviour
                 if (gameObject.transform.position.z >= 244 && gameObject.transform.position.z < 250)
                     pos = new Vector3(-6, 1.099988f, 244);
 
-                if (startTime >= finishTime)
-                {
-                    shield = false;
-                }
             }
             if (shield == false)
             {
@@ -198,7 +207,15 @@ public class Snoman_Move2 : MonoBehaviour
 
             car_col = false;
         }
+        if (shield)
+        {
+            startTime3 += Time.deltaTime;
+            if (startTime3 >= finishTime3)
+            {
 
+                shield = false;
+            }
+        }
         if (tree_col == true)
         {
             if (arrow == 1)
@@ -270,7 +287,7 @@ public class Snoman_Move2 : MonoBehaviour
         }
         if (reverse)
         {
-            startTime += Time.deltaTime;
+            startTime1 += Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -292,7 +309,7 @@ public class Snoman_Move2 : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, -90, 0);
                 pos += transform.forward * step;
             }
-            if (startTime >= finishTime)
+            if (startTime1 >= finishTime1)
             {
                 reverse = false;
             }
@@ -300,7 +317,7 @@ public class Snoman_Move2 : MonoBehaviour
        if (time)
         {
 
-            startTime += Time.deltaTime;
+            startTime2 += Time.deltaTime;
 
             GameObject[] objArray = GameObject.FindGameObjectsWithTag("Car");
             GameObject[] objArray2 = GameObject.FindGameObjectsWithTag("Car2");
@@ -310,7 +327,7 @@ public class Snoman_Move2 : MonoBehaviour
             for (int i = 0; i < objArray2.Length; i++)
                 objArray2[i].gameObject.transform.position += (new Vector3(10, 0, 0) * Time.deltaTime);
 
-            if (startTime >= finishTime)
+            if (startTime2 >= finishTime2)
             {
                 time = false;
             }
@@ -416,8 +433,8 @@ public class Snoman_Move2 : MonoBehaviour
         }
         if (other.gameObject.tag == "reverse")
         {
-            startTime = Time.time;
-            finishTime = startTime + 3f;
+            startTime1 = Time.time;
+            finishTime1 = startTime1 + 3f;
             reverse = true;
 
             Destroy(other.gameObject, 0);
@@ -426,8 +443,8 @@ public class Snoman_Move2 : MonoBehaviour
         if (other.gameObject.tag == "time")
         {
 
-            startTime = Time.time;
-            finishTime = startTime + 3f;
+            startTime2 = Time.time;
+            finishTime2 = startTime2 + 3f;
             time = true;
 
             Destroy(other.gameObject, 0);
@@ -435,8 +452,8 @@ public class Snoman_Move2 : MonoBehaviour
         }
         if (other.gameObject.tag == "shield")
         {
-            startTime = Time.time;
-            finishTime = startTime + 3f;
+            startTime3 = Time.time;
+            finishTime3 = startTime3 + 3f;
             shield = true;
 
             Destroy(other.gameObject, 0);

@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class Snowman_Move : MonoBehaviour
 {
-    float startTime;
-    float finishTime;
     bool reverse;
     bool time;
     bool hole_col;
@@ -20,6 +18,13 @@ public class Snowman_Move : MonoBehaviour
     float timer;
     int waitingTime;
     string groundnum;
+    float startTime1;
+    float startTime2;
+    float startTime3;
+
+    float finishTime1;
+    float finishTime2;
+    float finishTime3;
     bool shield;
     Vector3 holepos;
     Vector3 treepos;
@@ -44,6 +49,15 @@ public class Snowman_Move : MonoBehaviour
         hole_col = false;
         tree_col = false;
         car_col = false;
+
+        startTime1 = 0;
+        startTime2 = 0;
+        startTime3 = 0;
+
+        finishTime1 = 0;
+        finishTime2 = 0;
+        finishTime3 = 0;
+
         heart = 3;
         arrow = 0;
         carnum = 0;
@@ -159,9 +173,9 @@ public class Snowman_Move : MonoBehaviour
         }
         if (shield)
         {
-            if (startTime >= finishTime)
+            startTime3 += Time.deltaTime;
+            if (startTime3 >= finishTime3)
             {
-                startTime += Time.deltaTime;
 
                 shield = false;
             }
@@ -238,7 +252,7 @@ public class Snowman_Move : MonoBehaviour
         }
         if (reverse)
         {
-            startTime += Time.deltaTime;
+            startTime1 += Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -260,7 +274,7 @@ public class Snowman_Move : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, -90, 0);
                 pos += transform.forward * step;
             }
-            if (startTime >= finishTime)
+            if (startTime1 >= finishTime1)
             {
                 reverse = false;
             }
@@ -268,7 +282,7 @@ public class Snowman_Move : MonoBehaviour
         if (time)
         {
             audio1.Play();
-            startTime += Time.deltaTime;
+            startTime2 += Time.deltaTime;
 
             GameObject[] objArray = GameObject.FindGameObjectsWithTag("Car");
             GameObject[] objArray2 = GameObject.FindGameObjectsWithTag("Car2");
@@ -278,7 +292,7 @@ public class Snowman_Move : MonoBehaviour
             for (int i = 0; i < objArray2.Length; i++)
                 objArray2[i].gameObject.transform.position += (new Vector3(10, 0, 0) * Time.deltaTime);
 
-            if (startTime >= finishTime)
+            if (startTime2 >= finishTime2)
             {
                 time = false;
             }
@@ -357,8 +371,8 @@ public class Snowman_Move : MonoBehaviour
         }
         if (other.gameObject.tag == "reverse")
         {
-            startTime = Time.time;
-            finishTime = startTime + 3f;
+            startTime1 = Time.time;
+            finishTime1 = startTime1 + 3f;
             reverse = true;
 
             Destroy(other.gameObject, 0);
@@ -367,8 +381,8 @@ public class Snowman_Move : MonoBehaviour
         if (other.gameObject.tag == "time")
         {
 
-            startTime = Time.time;
-            finishTime = startTime + 3f;
+            startTime2 = Time.time;
+            finishTime2 = startTime2 + 3f;
             time = true;
 
             Destroy(other.gameObject, 0);
@@ -376,8 +390,8 @@ public class Snowman_Move : MonoBehaviour
         }
         if (other.gameObject.tag == "shield")
         {
-            startTime = Time.time;
-            finishTime = startTime + 3f;
+            startTime3 = Time.time;
+            finishTime3 = startTime3 + 3f;
             shield = true;
 
             Destroy(other.gameObject, 0);
