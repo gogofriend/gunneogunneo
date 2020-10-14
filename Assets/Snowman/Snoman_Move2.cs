@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class Snoman_Move2 : MonoBehaviour
 {
     float startTime;
@@ -20,6 +20,11 @@ public class Snoman_Move2 : MonoBehaviour
     float timer;
     int waitingTime;
     string groundnum;
+    public Text scoreData1;
+    public Text scoreData2;
+    public Text scoreData3;
+    public Text scoreData4;
+    public Text scoreData5;
 
     Vector3 holepos;
     Vector3 treepos;
@@ -292,6 +297,9 @@ public class Snoman_Move2 : MonoBehaviour
 
         if (pos.z > 252)
         {
+            Score_Mng.score += Mathf.FloorToInt(Timer.timelimit);
+            Score_Mng.Save();
+            Load();
             SceneManager.LoadScene("Ranking");
         }
 
@@ -356,6 +364,14 @@ public class Snoman_Move2 : MonoBehaviour
             heli.transform.position = new Vector3(-6, 6, 250.1f);
 
         transform.position = pos;
+    }
+    public void Load() //랭킹 Panel의 text에 점수를 로드
+    {
+        scoreData1.text = PlayerPrefs.GetInt("BestScore").ToString() + "초";
+        scoreData2.text = PlayerPrefs.GetInt("SecondScore").ToString() + "초";
+        scoreData3.text = PlayerPrefs.GetInt("ThirdScore").ToString() + "초";
+        scoreData4.text = PlayerPrefs.GetInt("FourthScore").ToString() + "초";
+        scoreData5.text = PlayerPrefs.GetInt("FifthScore").ToString() + "초";
     }
     void OnTriggerEnter(Collider other)
     {

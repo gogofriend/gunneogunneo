@@ -20,7 +20,7 @@ public class Snowman_Move : MonoBehaviour
     float timer;
     int waitingTime;
     string groundnum;
-
+    
     Vector3 holepos;
     Vector3 treepos;
     Vector3 pos;
@@ -48,7 +48,7 @@ public class Snowman_Move : MonoBehaviour
         carnum = 0;
         timer = 0;
         waitingTime = 2;
-
+        Score_Mng.score = 0;
         audio = gameObject.AddComponent<AudioSource>();
         audio.clip = jump;
         audio.loop = false;
@@ -278,6 +278,7 @@ public class Snowman_Move : MonoBehaviour
         if (pos.z > 1)
         {
             SceneManager.LoadScene("Continue");
+            Score_Mng.score += Mathf.FloorToInt(Timer.timelimit);
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
