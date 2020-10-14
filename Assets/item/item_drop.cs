@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class item_drop : MonoBehaviour
 {
@@ -11,13 +12,9 @@ public class item_drop : MonoBehaviour
     public GameObject hole = null;
     Vector3 hole_pos;
 
-    AudioSource audio;
-    public AudioClip burst;
     void Start()
     {
-        audio = gameObject.AddComponent<AudioSource>();
-        audio.clip = burst;
-        audio.loop = false;
+        
     }
     void Update()
     {
@@ -35,10 +32,12 @@ public class item_drop : MonoBehaviour
                     GameObject Hole = GameObject.Instantiate(hole);
                     hole_pos.x = transform.position.x;
                     hole_pos.z = transform.position.z;
-                    hole_pos.y = 0.1f;
+                    if (SceneManager.GetActiveScene().name == "Stage1")
+                        hole_pos.y = 0.1f;
+                    else if (SceneManager.GetActiveScene().name == "Stage2")
+                        hole_pos.y = 0.3f;
                     Hole.transform.position = hole_pos;
                     Hole.transform.parent = null;
-                    audio.Play();
                 }
             }
             if (v <= 0)   //속도<=0 이면

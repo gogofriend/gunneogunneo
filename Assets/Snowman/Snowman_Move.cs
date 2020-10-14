@@ -34,8 +34,6 @@ public class Snowman_Move : MonoBehaviour
 
     AudioSource audio;
     public AudioClip jump;
-    AudioSource audio1;
-    public AudioClip cnt_time;
 
     public GameObject heli;
 
@@ -67,10 +65,6 @@ public class Snowman_Move : MonoBehaviour
         audio = gameObject.AddComponent<AudioSource>();
         audio.clip = jump;
         audio.loop = false;
-
-        audio1 = gameObject.AddComponent<AudioSource>();
-        audio1.clip = cnt_time;
-        audio1.loop = false;
     }
 
     // Update is called once per frame
@@ -281,7 +275,6 @@ public class Snowman_Move : MonoBehaviour
         }
         if (time)
         {
-            audio1.Play();
             startTime2 += Time.deltaTime;
 
             GameObject[] objArray = GameObject.FindGameObjectsWithTag("Car");
