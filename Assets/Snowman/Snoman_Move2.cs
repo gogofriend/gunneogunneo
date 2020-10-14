@@ -29,6 +29,8 @@ public class Snoman_Move2 : MonoBehaviour
 
     AudioSource audio;
     public AudioClip jump;
+
+    public GameObject heli;
     // Start is called before the first frame update
     void Start()
     {
@@ -113,47 +115,47 @@ public class Snoman_Move2 : MonoBehaviour
             pos -= new Vector3(1, 0, 0);
             //죽으면 가까운 그라운드로
             if (gameObject.transform.position.z >= 52 && gameObject.transform.position.z < 58)
-                pos = new Vector3(-6, -2, 52);
+                pos = new Vector3(-6, 1.099988f, 52);
             if (gameObject.transform.position.z >= 58 && gameObject.transform.position.z < 69)
-                pos = new Vector3(-6, -2, 58);
+                pos = new Vector3(-6, 1.099988f, 58);
             if (gameObject.transform.position.z >= 69 && gameObject.transform.position.z < 83)
-                pos = new Vector3(-6, -2, 69);
+                pos = new Vector3(-6, 1.099988f, 69);
             if (gameObject.transform.position.z >= 83 && gameObject.transform.position.z < 96)
-                pos = new Vector3(-6, -2, 83);
+                pos = new Vector3(-6, 1.099988f, 83);
             if (gameObject.transform.position.z >= 96 && gameObject.transform.position.z < 102)
-                pos = new Vector3(-6, -2, 96);
+                pos = new Vector3(-6, 1.099988f, 96);
             if (gameObject.transform.position.z >= 102 && gameObject.transform.position.z < 110)
-                pos = new Vector3(-6, -2, 102);
+                pos = new Vector3(-6, 1.099988f, 102);
             if (gameObject.transform.position.z >= 110 && gameObject.transform.position.z < 116)
-                pos = new Vector3(-6, -2, 110);
+                pos = new Vector3(-6, 1.099988f, 110);
             if (gameObject.transform.position.z >= 116 && gameObject.transform.position.z < 122)
-                pos = new Vector3(-6, -2, 116);
+                pos = new Vector3(-6, 1.099988f, 116);
             if (gameObject.transform.position.z >= 122 && gameObject.transform.position.z < 136)
-                pos = new Vector3(-6, -2, 122);
+                pos = new Vector3(-6, 1.099988f, 122);
             if (gameObject.transform.position.z >= 136 && gameObject.transform.position.z < 142)
-                pos = new Vector3(-6, -2, 136);
+                pos = new Vector3(-6, 1.099988f, 136);
             if (gameObject.transform.position.z >= 142 && gameObject.transform.position.z < 152)
-                pos = new Vector3(-6, -2, 142);
+                pos = new Vector3(-6, 1.099988f, 142);
             if (gameObject.transform.position.z >= 152 && gameObject.transform.position.z < 162)
-                pos = new Vector3(-6, -2, 152);
+                pos = new Vector3(-6, 1.099988f, 152);
             if (gameObject.transform.position.z >= 162 && gameObject.transform.position.z < 180)
-                pos = new Vector3(-6, -2, 162);
+                pos = new Vector3(-6, 1.099988f, 162);
             if (gameObject.transform.position.z >= 180 && gameObject.transform.position.z < 192)
-                pos = new Vector3(-6, -2, 180);
+                pos = new Vector3(-6, 1.099988f, 180);
             if (gameObject.transform.position.z >= 192 && gameObject.transform.position.z < 202)
-                pos = new Vector3(-6, -2, 192);
+                pos = new Vector3(-6, 1.099988f, 192);
             if (gameObject.transform.position.z >= 202 && gameObject.transform.position.z < 212)
-                pos = new Vector3(-6, -2, 202);
+                pos = new Vector3(-6, 1.099988f, 202);
             if (gameObject.transform.position.z >= 212 && gameObject.transform.position.z < 224)
-                pos = new Vector3(-6, -2, 212);
+                pos = new Vector3(-6, 1.099988f, 212);
             if (gameObject.transform.position.z >= 224 && gameObject.transform.position.z < 232)
-                pos = new Vector3(-6, -2, 224);
+                pos = new Vector3(-6, 1.099988f, 224);
             if (gameObject.transform.position.z >= 232 && gameObject.transform.position.z < 240)
-                pos = new Vector3(-6, -2, 232);
+                pos = new Vector3(-6, 1.099988f, 232);
             if (gameObject.transform.position.z >= 240 && gameObject.transform.position.z < 244)
-                pos = new Vector3(-6, -2, 240);
+                pos = new Vector3(-6, 1.099988f, 240);
             if (gameObject.transform.position.z >= 244 && gameObject.transform.position.z < 250)
-                pos = new Vector3(-6, -2, 244);
+                pos = new Vector3(-6, 1.099988f, 244);
             /*
             timer += Time.deltaTime;
             if (timer > waitingTime)
@@ -309,6 +311,49 @@ public class Snoman_Move2 : MonoBehaviour
         {
             audio.Play();
         }
+
+        if (gameObject.transform.position.z >= 52 && gameObject.transform.position.z < 58)
+            heli.transform.position = new Vector3(-6, 8, 58.1f);
+        if (gameObject.transform.position.z >= 58 && gameObject.transform.position.z < 69)
+            heli.transform.position = new Vector3(-6, 8, 69.1f);
+        if (gameObject.transform.position.z >= 69 && gameObject.transform.position.z < 83)
+            heli.transform.position = new Vector3(-6, 8, 83.1f);
+        if (gameObject.transform.position.z >= 83 && gameObject.transform.position.z < 96)
+            heli.transform.position = new Vector3(-6, 6, 96.1f);
+        if (gameObject.transform.position.z >= 96 && gameObject.transform.position.z < 102)
+            heli.transform.position = new Vector3(-6, 6, 102.1f);
+        if (gameObject.transform.position.z >= 102 && gameObject.transform.position.z < 110)
+            heli.transform.position = new Vector3(-6, 6, 110.1f);
+        if (gameObject.transform.position.z >= 110 && gameObject.transform.position.z < 116)
+            heli.transform.position = new Vector3(-6, 6, 116.1f);
+        if (gameObject.transform.position.z >= 116 && gameObject.transform.position.z < 122)
+            heli.transform.position = new Vector3(-6, 6, 122.1f);
+        if (gameObject.transform.position.z >= 122 && gameObject.transform.position.z < 136)
+            heli.transform.position = new Vector3(-6, 6, 136.1f);
+        if (gameObject.transform.position.z >= 136 && gameObject.transform.position.z < 142)
+            heli.transform.position = new Vector3(-6, 6, 142.1f);
+        if (gameObject.transform.position.z >= 142 && gameObject.transform.position.z < 152)
+            heli.transform.position = new Vector3(-6, 6, 152.1f);
+        if (gameObject.transform.position.z >= 152 && gameObject.transform.position.z < 162)
+            heli.transform.position = new Vector3(-6, 6, 162.1f);
+        if (gameObject.transform.position.z >= 162 && gameObject.transform.position.z < 180)
+            heli.transform.position = new Vector3(-6, 6, 180.1f);
+        if (gameObject.transform.position.z >= 180 && gameObject.transform.position.z < 192)
+            heli.transform.position = new Vector3(-6, 6, 192.1f);
+        if (gameObject.transform.position.z >= 192 && gameObject.transform.position.z < 202)
+            heli.transform.position = new Vector3(-6, 6, 202.1f);
+        if (gameObject.transform.position.z >= 202 && gameObject.transform.position.z < 212)
+            heli.transform.position = new Vector3(-6, 6, 212.1f);
+        if (gameObject.transform.position.z >= 212 && gameObject.transform.position.z < 224)
+            heli.transform.position = new Vector3(-6, 6, 224.1f);
+        if (gameObject.transform.position.z >= 224 && gameObject.transform.position.z < 232)
+            heli.transform.position = new Vector3(-6, 6, 232.1f);
+        if (gameObject.transform.position.z >= 232 && gameObject.transform.position.z < 240)
+            heli.transform.position = new Vector3(-6, 6, 240.1f);
+        if (gameObject.transform.position.z >= 240 && gameObject.transform.position.z < 244)
+            heli.transform.position = new Vector3(-6, 6, 244.1f);
+        if (gameObject.transform.position.z >= 244 && gameObject.transform.position.z < 250)
+            heli.transform.position = new Vector3(-6, 6, 250.1f);
 
         transform.position = pos;
     }

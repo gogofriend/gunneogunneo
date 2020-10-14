@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Car_contorl2.cs" />
+    <Compile Include="Assets\SceneScript\inputranking.cs" />
     <Compile Include="Assets\Helicopter\Wing.cs" />
     <Compile Include="Assets\SceneScript\quit.cs" />
     <Compile Include="Assets\Car_control.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Assets\SceneScript\start.cs" />
     <Compile Include="Assets\Snowman\Snoman_Move2.cs" />
     <Compile Include="Assets\Helicopter\Helicopter.cs" />
+    <Compile Include="Assets\SceneScript\Ranking1.cs" />
     <Compile Include="Assets\SceneScript\back.cs" />
     <Compile Include="Assets\SceneScript\intro.cs" />
     <Compile Include="Assets\SceneScript\no.cs" />
@@ -74,8 +76,6 @@
     <Compile Include="Assets\CameraScript\cameramove.cs" />
     <Compile Include="Assets\SceneScript\ranking.cs" />
     <Compile Include="Assets\Bus\Car_Move.cs" />
-    <Compile Include="Assets\SceneScript\Ranking1.cs" />
-    <Compile Include="Assets\SceneScript\inputranking.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

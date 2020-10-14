@@ -1920,6 +1920,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf1b57796eba794588c041987e5339c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &362749952 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8215241760191932687, guid: c54149a2138e98143b83c0086f6672a1, type: 3}
+  m_PrefabInstance: {fileID: 1567159902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &369507930
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4574,6 +4579,10 @@ PrefabInstance:
       propertyPath: cnt_time
       value: 
       objectReference: {fileID: 8300000, guid: 3c384b0453f3c0c44b81953923121262, type: 3}
+    - target: {fileID: 8650315014340829391, guid: 7ff9fa5f9c7365040b2adc64c4255944, type: 3}
+      propertyPath: heli
+      value: 
+      objectReference: {fileID: 362749952}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ff9fa5f9c7365040b2adc64c4255944, type: 3}
 --- !u!1001 &747929463
@@ -9092,7 +9101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6676991135725468715, guid: c54149a2138e98143b83c0086f6672a1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -98
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 6676991135725468715, guid: c54149a2138e98143b83c0086f6672a1, type: 3}
       propertyPath: m_LocalRotation.x
