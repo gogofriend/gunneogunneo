@@ -18,7 +18,7 @@ public class Car_control : MonoBehaviour
             }
             for (int i = 0; i < objArray2.Length; i++)
             {
-
+           
                 objArray2[i].gameObject.GetComponent<Car_Move>().enabled = false;
                 objArray2[i].gameObject.GetComponent<Car_Move2>().enabled = true;
                

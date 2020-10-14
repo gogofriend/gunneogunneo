@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class Snowman_Move2 : MonoBehaviour
+public class Snoman_Move2 : MonoBehaviour
 {
     float startTime;
     float finishTime;
@@ -236,7 +236,7 @@ public class Snowman_Move2 : MonoBehaviour
                 reverse = false;
             }
         }
-        if (time)
+       if (time)
         {
 
             startTime += Time.deltaTime;
@@ -254,13 +254,14 @@ public class Snowman_Move2 : MonoBehaviour
                 time = false;
             }
         }
+   
 
         if (pos.x > 20)
             pos.x = 20;
         if (pos.x < -25)
             pos.x = -25;
 
-        if (pos.z > 1)
+        if (pos.z > 252)
         {
             SceneManager.LoadScene("Continue");
         }
