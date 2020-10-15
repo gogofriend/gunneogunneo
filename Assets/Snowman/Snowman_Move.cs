@@ -7,87 +7,77 @@ using UnityEngine.SceneManagement;
 
 public class Snowman_Move : MonoBehaviour
 {
-    bool reverse;
-    bool time;
-    bool hole_col;
-    bool tree_col;
-    bool car_col;
-    int heart;
-    int arrow;
-    int carnum;
-    float timer;
-    int waitingTime;
-    string groundnum;
-    float startTime1;
-    float startTime2;
-    float startTime3;
+    bool reverse; //reverse 아이템 체크 변수
+    bool time; //제한시간 체크 변수
+    bool hole_col; //구멍 충돌 여부 확인
+    bool tree_col;//나무 충돌 여부 확인
+    bool car_col; //차 충돌 여부 확인
+    int heart; //생명 개수
+    int arrow; //키보드 입력 값 저장
 
-    float finishTime1;
-    float finishTime2;
-    float finishTime3;
-    bool shield;
-    Vector3 holepos;
-    Vector3 treepos;
-    Vector3 pos;
-    Collider obc;
-    float step = 2;
+    float startTime1; //아이템 시간 측정용
+    float startTime2; //아이템 시간 측정용
+    float startTime3; //아이템 시간 측정용
 
-    AudioSource audio;
-    public AudioClip jump;
+    float finishTime1; //아이템 시간 측정용
+    float finishTime2; //아이템 시간 측정용
+    float finishTime3; //아이템 시간 측정용
+    bool shield; //실드 사용 여부 체크
+    Vector3 pos; //눈사람 위치
+    float step = 2; //눈사람 한걸음
 
-    public GameObject heli;
+    AudioSource audio; //오디오 변수
+    public AudioClip jump; //오디오 점프
+
+    public GameObject heli; //헬리콥터 오브젝트
 
     // Start is called before the first frame update
     void Start()
     {
-        pos = transform.position;
-        reverse = false;
-        time = false;
-        shield = false;
-        hole_col = false;
-        tree_col = false;
-        car_col = false;
+        pos = transform.position; //현재 위치 받아오기
+        reverse = false; //아이템 reverse 끄기
+        time = false; //타임 변수 끄기
+        shield = false; //실드 아이템 끄기
+        hole_col = false; //구멍 충돌 false로 초기화
+        tree_col = false; //나무 충돌 false로 초기화
+        car_col = false;  //차 충돌 false로 초기화
 
-        startTime1 = 0;
-        startTime2 = 0;
-        startTime3 = 0;
+        startTime1 = 0;  //아이템 시간 변수 초기화
+        startTime2 = 0;  //아이템 시간 변수 초기화
+        startTime3 = 0;  //아이템 시간 변수 초기화
 
-        finishTime1 = 0;
-        finishTime2 = 0;
-        finishTime3 = 0;
+        finishTime1 = 0;  //아이템 시간 변수 초기화
+        finishTime2 = 0;  //아이템 시간 변수 초기화
+        finishTime3 = 0;  //아이템 시간 변수 초기화
 
-        heart = 3;
-        arrow = 0;
-        carnum = 0;
-        timer = 0;
-        waitingTime = 2;
-        Score_Mng.score = 0;
-        audio = gameObject.AddComponent<AudioSource>();
-        audio.clip = jump;
-        audio.loop = false;
+        heart = 3;  //생명 개수 3개로 초기화
+        arrow = 0;  //방향키 0으로 초기화
+        Score_Mng.score = 0; //점수 0으로 최기화
+        audio = gameObject.AddComponent<AudioSource>();  //오디오 소스 받아오기
+        audio.clip = jump;  //점프소리 넣기
+        audio.loop = false;  //반복 안함
     }
 
     // Update is called once per frame
     void Update()
     {
         //휘청이지 않게 함
-        if (arrow == 1)
+        if (arrow == 1) //위
         {
             gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         }
-        if (arrow == 3)
+        if (arrow == 3) //오른쪽
         {
             gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
         }
-        if (arrow == 4)
+        if (arrow == 4) //왼쪽
         {
             gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
         }
-        if (arrow == 2)
+        if (arrow == 2)  //아래
         {
             gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
         }
-
         if (heart == 0)
             SceneManager.LoadScene("GameOver");
 
@@ -355,14 +345,10 @@ public class Snowman_Move : MonoBehaviour
         if (other.gameObject.tag == "Car2")
         {
             car_col = true;
-            carnum = 2;
-            Debug.Log("car2");
         }
         if (other.gameObject.tag == "Car")
         {
             car_col = true;
-            carnum = 1;
-            Debug.Log("car");
         }
         if (other.gameObject.tag == "reverse")
         {
@@ -399,15 +385,11 @@ public class Snowman_Move : MonoBehaviour
         if (other.gameObject.tag == "hole")
         {
             hole_col = true;
-            Debug.Log("hole");
-            holepos = other.gameObject.transform.position;
         }
 
         if (other.gameObject.tag == "Tree")
         {
             tree_col = true;
-            Debug.Log("tree");
-            treepos = other.gameObject.transform.position;
 
         }
     }
