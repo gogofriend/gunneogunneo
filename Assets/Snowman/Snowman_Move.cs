@@ -291,10 +291,12 @@ public class Snowman_Move : MonoBehaviour
             }
         }
 
-        if (pos.x > 200)
-            pos.x = 200;
+        if (pos.x > 12)
+            pos.x = 12;
         if (pos.x < -25)
             pos.x = -25;
+        if (pos.z < -98)
+            pos.z = -98;
 
         if (pos.z > 1)
         {

@@ -7,13 +7,16 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public static float timelimit = 50;
+    public static float timelimit;
     public Text timert;
 
     // Start is called before the first frame update
     void Start()
     {
-        timelimit = 50;
+        if (SceneManager.GetActiveScene().name == "Stage1")
+            timelimit = 50;
+        else if (SceneManager.GetActiveScene().name == "Stage2")
+            timelimit = 120;
     }
 
     // Update is called once per frame
