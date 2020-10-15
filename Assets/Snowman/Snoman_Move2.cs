@@ -53,7 +53,7 @@ public class Snoman_Move2 : MonoBehaviour
         tree_col = false;
         car_col = false;
         shield = false;
-        heart = 300;
+        heart = 3;
         arrow = 0;
         carnum = 0;
         timer = 0;
