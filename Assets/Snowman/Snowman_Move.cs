@@ -108,7 +108,7 @@ public class Snowman_Move : MonoBehaviour
                     if (gameObject.transform.position.z >= -82 && gameObject.transform.position.z < -73)
                         pos = new Vector3(0, 1, -82);
                     if (gameObject.transform.position.z >= -73 && gameObject.transform.position.z < -66)
-                        pos = new Vector3(0, 1, -73);
+                        pos = new Vector3(0, 1, -72);
                     if (gameObject.transform.position.z >= -66 && gameObject.transform.position.z < -58)
                         pos = new Vector3(0, 1, -66);
                     if (gameObject.transform.position.z >= -58 && gameObject.transform.position.z < -50)
@@ -116,7 +116,7 @@ public class Snowman_Move : MonoBehaviour
                     if (gameObject.transform.position.z >= -50 && gameObject.transform.position.z < -37)
                         pos = new Vector3(0, 1, -50);
                     if (gameObject.transform.position.z >= -37 && gameObject.transform.position.z < -28)
-                        pos = new Vector3(0, 1, -37);
+                        pos = new Vector3(0, 1, -36);
                     if (gameObject.transform.position.z >= -28 && gameObject.transform.position.z < -20)
                         pos = new Vector3(0, 1, -28);
                     if (gameObject.transform.position.z >= -20 && gameObject.transform.position.z < -10)
@@ -141,7 +141,7 @@ public class Snowman_Move : MonoBehaviour
                 if (gameObject.transform.position.z >= -82 && gameObject.transform.position.z < -73)
                     pos = new Vector3(0, 1, -82);
                 if (gameObject.transform.position.z >= -73 && gameObject.transform.position.z < -66)
-                    pos = new Vector3(0, 1, -73);
+                    pos = new Vector3(0, 1, -72);
                 if (gameObject.transform.position.z >= -66 && gameObject.transform.position.z < -58)
                     pos = new Vector3(0, 1, -66);
                 if (gameObject.transform.position.z >= -58 && gameObject.transform.position.z < -50)
@@ -149,7 +149,7 @@ public class Snowman_Move : MonoBehaviour
                 if (gameObject.transform.position.z >= -50 && gameObject.transform.position.z < -37)
                     pos = new Vector3(0, 1, -50);
                 if (gameObject.transform.position.z >= -37 && gameObject.transform.position.z < -28)
-                    pos = new Vector3(0, 1, -37);
+                    pos = new Vector3(0, 1, -36);
                 if (gameObject.transform.position.z >= -28 && gameObject.transform.position.z < -20)
                     pos = new Vector3(0, 1, -28);
                 if (gameObject.transform.position.z >= -20 && gameObject.transform.position.z < -10)

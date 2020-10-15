@@ -108,9 +108,9 @@ public class Snoman_Move2 : MonoBehaviour
                 if (gameObject.transform.position.z >= 58 && gameObject.transform.position.z < 69)
                     pos = new Vector3(-6, 1.099988f, 58);
                 if (gameObject.transform.position.z >= 69 && gameObject.transform.position.z < 83)
-                    pos = new Vector3(-6, 1.099988f, 69);
+                    pos = new Vector3(-6, 1.099988f, 70);
                 if (gameObject.transform.position.z >= 83 && gameObject.transform.position.z < 96)
-                    pos = new Vector3(-6, 1.099988f, 83);
+                    pos = new Vector3(-6, 1.099988f, 84);
                 if (gameObject.transform.position.z >= 96 && gameObject.transform.position.z < 102)
                     pos = new Vector3(-6, 1.099988f, 96);
                 if (gameObject.transform.position.z >= 102 && gameObject.transform.position.z < 110)
@@ -159,9 +159,9 @@ public class Snoman_Move2 : MonoBehaviour
                 if (gameObject.transform.position.z >= 58 && gameObject.transform.position.z < 69)
                     pos = new Vector3(-6, 1.099988f, 58);
                 if (gameObject.transform.position.z >= 69 && gameObject.transform.position.z < 83)
-                    pos = new Vector3(-6, 1.099988f, 69);
+                    pos = new Vector3(-6, 1.099988f, 70);
                 if (gameObject.transform.position.z >= 83 && gameObject.transform.position.z < 96)
-                    pos = new Vector3(-6, 1.099988f, 83);
+                    pos = new Vector3(-6, 1.099988f, 84);
                 if (gameObject.transform.position.z >= 96 && gameObject.transform.position.z < 102)
                     pos = new Vector3(-6, 1.099988f, 96);
                 if (gameObject.transform.position.z >= 102 && gameObject.transform.position.z < 110)
