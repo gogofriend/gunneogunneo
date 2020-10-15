@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Score_Mng : MonoBehaviour
 {
-    public static int score;
+    public static int score; //점수 저장 변수
 
-    public Text scoreData1;
-    public Text scoreData2;
-    public Text scoreData3;
-    public Text scoreData4;
-    public Text scoreData5;
+    public Text scoreData1; // 1위 점수 텍스트 
+    public Text scoreData2; // 2위 점수 텍스트 
+    public Text scoreData3; // 3위 점수 텍스트 
+    public Text scoreData4; // 4위 점수 텍스트 
+    public Text scoreData5; // 5위 점수 텍스트 
 
     // Start is called before the first frame update
     void Start()
@@ -21,54 +21,55 @@ public class Score_Mng : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreData1.text = PlayerPrefs.GetInt("BestScore").ToString() + "초";
-        scoreData2.text = PlayerPrefs.GetInt("SecondScore").ToString() + "초";
-        scoreData3.text = PlayerPrefs.GetInt("ThirdScore").ToString() + "초";
-        scoreData4.text = PlayerPrefs.GetInt("FourthScore").ToString() + "초";
-        scoreData5.text = PlayerPrefs.GetInt("FifthScore").ToString() + "초";
+        scoreData1.text = PlayerPrefs.GetInt("BestScore").ToString() + "초"; // 1위 점수 텍스트 내용 업데이트
+        scoreData2.text = PlayerPrefs.GetInt("SecondScore").ToString() + "초"; // 2위 점수 텍스트 내용 업데이트
+        scoreData3.text = PlayerPrefs.GetInt("ThirdScore").ToString() + "초"; // 3위 점수 텍스트 내용 업데이트
+        scoreData4.text = PlayerPrefs.GetInt("FourthScore").ToString() + "초";  // 4위 점수 텍스트 내용 업데이트
+        scoreData5.text = PlayerPrefs.GetInt("FifthScore").ToString() + "초"; // 5위 점수 텍스트 내용 업데이트
     }
 
-    public static void Save()  //점수 데이터를 저장함
+    public static void Save()  //점수 데이터 저장
     {
-        if (score < PlayerPrefs.GetInt("BestScore"))
+        if (score < PlayerPrefs.GetInt("BestScore")) // 1위 점수보다 작을 경우
         {
-            if (score < PlayerPrefs.GetInt("SecondScore"))
+            if (score < PlayerPrefs.GetInt("SecondScore")) //2위 점수보다 작을 경우
             {
-                if (score < PlayerPrefs.GetInt("ThirdScore"))
+                if (score < PlayerPrefs.GetInt("ThirdScore")) //3위 점수보다 작을 경우
                 {
-                    if (score < PlayerPrefs.GetInt("FourthScore"))
+                    if (score < PlayerPrefs.GetInt("FourthScore"))  //4위 점수보다 작을 경우
                     {
-                        if (score < PlayerPrefs.GetInt("FifthScore"))
-                            return;
+                        if (score < PlayerPrefs.GetInt("FifthScore"))  //5위 점수보다 작을 경우
+                            return; //저장하지 않음
                         //5등일때
-                        PlayerPrefs.SetInt("FifthScore", score);
+                        PlayerPrefs.SetInt("FifthScore", score);  //5위에 점수 저장
                         return;
                     }
                     //4등일때
-                    PlayerPrefs.SetInt("FifthScore", PlayerPrefs.GetInt("FourthScore"));
-                    PlayerPrefs.SetInt("FourthScore", score);
+                    PlayerPrefs.SetInt("FifthScore", PlayerPrefs.GetInt("FourthScore")); // 기존 4위 점수를 5위로 옮김
+                    PlayerPrefs.SetInt("FourthScore", score); //4위에 점수 저장
                     return;
                 }
                 //3등일때
-                PlayerPrefs.SetInt("FifthScore", PlayerPrefs.GetInt("FourthScore"));
-                PlayerPrefs.SetInt("FourthScore", PlayerPrefs.GetInt("ThirdScore"));
-                PlayerPrefs.SetInt("ThirdScore", score);
+                PlayerPrefs.SetInt("FifthScore", PlayerPrefs.GetInt("FourthScore")); // 기존 4위 점수를 5위로 옮김
+                PlayerPrefs.SetInt("FourthScore", PlayerPrefs.GetInt("ThirdScore")); // 기존 3위 점수를 4위로 옮김
+                PlayerPrefs.SetInt("ThirdScore", score); //3위에 점수 저장
                 return;
             }
             //2등일때
             PlayerPrefs.SetInt("FifthScore", PlayerPrefs.GetInt("FourthScore"));
             PlayerPrefs.SetInt("FourthScore", PlayerPrefs.GetInt("ThirdScore"));
             PlayerPrefs.SetInt("ThirdScore", PlayerPrefs.GetInt("SecondScore"));
-            PlayerPrefs.SetInt("SecondScore", score);
+            PlayerPrefs.SetInt("SecondScore", score); //2위에 점수 저장
             return;
         }
         //1등일때
-        if (score == PlayerPrefs.GetInt("BestScore")) return;
-        PlayerPrefs.SetInt("FifthScore", PlayerPrefs.GetInt("FourthScore"));
-        PlayerPrefs.SetInt("FourthdScore", PlayerPrefs.GetInt("ThirdScore"));
-        PlayerPrefs.SetInt("ThirdScore", PlayerPrefs.GetInt("SecondScore"));
-        PlayerPrefs.SetInt("SecondScore", PlayerPrefs.GetInt("BestScore"));
-        PlayerPrefs.SetInt("BestScore", score);
+        if (score == PlayerPrefs.GetInt("BestScore")) //1등 점수가 같을 경우 저장하지 않음
+            return;
+        PlayerPrefs.SetInt("FifthScore", PlayerPrefs.GetInt("FourthScore")); // 기존 4위 점수를 5위로 옮김
+        PlayerPrefs.SetInt("FourthScore", PlayerPrefs.GetInt("ThirdScore")); // 기존 3위 점수를 4위로 옮김
+        PlayerPrefs.SetInt("ThirdScore", PlayerPrefs.GetInt("SecondScore")); // 기존 2위 점수를 3위로 옮김
+        PlayerPrefs.SetInt("SecondScore", PlayerPrefs.GetInt("BestScore")); // 기존 1위 점수를 2위로 옮김
+        PlayerPrefs.SetInt("BestScore", score); //1위에 점수 저장
     }
 
 
