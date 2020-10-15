@@ -291,10 +291,10 @@ public class Snowman_Move : MonoBehaviour
             }
         }
 
-        if (pos.x > 12)
-            pos.x = 12;
-        if (pos.x < -25)
-            pos.x = -25;
+        if (pos.x > 10)
+            pos.x = 10;
+        if (pos.x < -14)
+            pos.x = -14;
         if (pos.z < -98)
             pos.z = -98;
 
@@ -321,31 +321,31 @@ public class Snowman_Move : MonoBehaviour
             audio.Play();
         }
 
-        if (gameObject.transform.position.z >= -98 && gameObject.transform.position.z < -90)
+        if (gameObject.transform.position.z > -98 && gameObject.transform.position.z < -92)
             heli.transform.position = new Vector3(0, 8, -90);
-        if (gameObject.transform.position.z >= -90 && gameObject.transform.position.z < -86)
+        if (gameObject.transform.position.z > -90 && gameObject.transform.position.z < -88)
             heli.transform.position = new Vector3(0, 8, -86);
-        if (gameObject.transform.position.z >= -86 && gameObject.transform.position.z < -82)
+        if (gameObject.transform.position.z > -86 && gameObject.transform.position.z < -84)
             heli.transform.position = new Vector3(0, 8, -82);
-        if (gameObject.transform.position.z >= -82 && gameObject.transform.position.z < -73)
+        if (gameObject.transform.position.z > -82 && gameObject.transform.position.z < -75)
             heli.transform.position = new Vector3(0, 8, -73);
-        if (gameObject.transform.position.z >= -73 && gameObject.transform.position.z < -66)
+        if (gameObject.transform.position.z > -73 && gameObject.transform.position.z < -68)
             heli.transform.position = new Vector3(0, 8, -66);
-        if (gameObject.transform.position.z >= -66 && gameObject.transform.position.z < -58)
+        if (gameObject.transform.position.z > -66 && gameObject.transform.position.z < -60)
             heli.transform.position = new Vector3(0, 8, -58);
-        if (gameObject.transform.position.z >= -58 && gameObject.transform.position.z < -50)
+        if (gameObject.transform.position.z > -58 && gameObject.transform.position.z < -52)
             heli.transform.position = new Vector3(0, 8, -50);
-        if (gameObject.transform.position.z >= -50 && gameObject.transform.position.z < -37)
+        if (gameObject.transform.position.z > -50 && gameObject.transform.position.z < -39)
             heli.transform.position = new Vector3(0, 8, -37);
-        if (gameObject.transform.position.z >= -37 && gameObject.transform.position.z < -28)
+        if (gameObject.transform.position.z > -37 && gameObject.transform.position.z < -30)
             heli.transform.position = new Vector3(0, 8, -28);
-        if (gameObject.transform.position.z >= -28 && gameObject.transform.position.z < -20)
+        if (gameObject.transform.position.z > -28 && gameObject.transform.position.z < -22)
             heli.transform.position = new Vector3(0, 8, -20);
-        if (gameObject.transform.position.z >= -20 && gameObject.transform.position.z < -10)
+        if (gameObject.transform.position.z > -20 && gameObject.transform.position.z < -12)
             heli.transform.position = new Vector3(0, 8, -10);
-        if (gameObject.transform.position.z >= -10 && gameObject.transform.position.z < -6)
+        if (gameObject.transform.position.z > -10 && gameObject.transform.position.z < -8)
             heli.transform.position = new Vector3(0, 8, -6);
-        if (gameObject.transform.position.z >= -6 && gameObject.transform.position.z < 0)
+        if (gameObject.transform.position.z > -6 && gameObject.transform.position.z < 2)
             heli.transform.position = new Vector3(0, 8, 0);
 
         transform.position = pos;
