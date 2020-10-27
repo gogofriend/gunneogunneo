@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Snoman_Move2 : MonoBehaviour
 {
-
+    bool bh;  //깨진하트 확인 변수
     bool reverse;
     bool time;
     bool hole_col;
@@ -24,13 +24,17 @@ public class Snoman_Move2 : MonoBehaviour
     public Text scoreData3;
     public Text scoreData4;
     public Text scoreData5;
+    float htimer;//깨진하트 타이머
     float startTime1;
     float startTime2;
     float startTime3;
+    float startTime4;
 
     float finishTime1;
     float finishTime2;
     float finishTime3;
+    float finishTime4;
+
     bool shield;
 
     Vector3 holepos;
@@ -43,6 +47,10 @@ public class Snoman_Move2 : MonoBehaviour
     public AudioClip jump;
 
     public GameObject heli;
+    public GameObject heartb;//깨진하트 오브젝트
+    public GameObject shielditem;//실드 
+    public GameObject timeagainstitem;//시간을 거스르는자
+    public GameObject reverseitem;//거꾸로
     // Start is called before the first frame update
     void Start()
     {
@@ -61,19 +69,48 @@ public class Snoman_Move2 : MonoBehaviour
         startTime1 = 0;
         startTime2 = 0;
         startTime3 = 0;
+        startTime4 = 0;  //깨진 하트 시간 변수 초기화
 
         finishTime1 = 0;
         finishTime2 = 0;
         finishTime3 = 0;
+        finishTime4 = 0;  //깨진 하트 시간 변수 초기화
 
         audio = gameObject.AddComponent<AudioSource>();
         audio.clip = jump;
         audio.loop = false;
+
+        bh = false; // 하트 안깨진 상태
+        htimer = 0.0f;
+
+        heartb = GameObject.Find("heartb");//깨진하트 오브젝트찾기
+        shielditem = GameObject.Find("shielditem");//실드 찾기
+        timeagainstitem = GameObject.Find("timeagainstitem");//시간을거스르는자 찾기
+        reverseitem = GameObject.Find("reverseitem");//거꾸로 찾기
+
+        heartb.SetActive(false);
+        shielditem.SetActive(false);
+        timeagainstitem.SetActive(false);
+        reverseitem.SetActive(false);
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        htimer += Time.deltaTime; //깨진하트 시간측정용        
+
+        if (bh == true)
+        {
+            startTime4 += Time.deltaTime;
+            heartb.SetActive(true);
+            if (startTime4 >= finishTime4)
+            {
+                heartb.SetActive(false);
+                bh = false;
+            }
+        }
         //휘청이지 않게 함
         if (arrow == 1)
         {
@@ -150,7 +187,10 @@ public class Snoman_Move2 : MonoBehaviour
             if (shield == false)
             {
                 heart--;
-                Debug.Log("하트감소, 하트개수 : " + heart);
+
+                startTime4 = Time.time;
+                finishTime4 = startTime4 + 1f;
+                bh = true;
 
                 pos -= new Vector3(1, 0, 0);
                 //죽으면 가까운 그라운드로
@@ -197,22 +237,15 @@ public class Snoman_Move2 : MonoBehaviour
                 if (gameObject.transform.position.z >= 244 && gameObject.transform.position.z < 250)
                     pos = new Vector3(-6, 1.099988f, 244);
             }
-            /*
-            timer += Time.deltaTime;
-            if (timer > waitingTime)
-            {
-                car_col = false;
-                timer = 0;
-            }//실드*/
-
             car_col = false;
         }
         if (shield)
         {
+            shielditem.SetActive(true);
             startTime3 += Time.deltaTime;
             if (startTime3 >= finishTime3)
             {
-
+                shielditem.SetActive(false);
                 shield = false;
             }
         }
@@ -287,6 +320,7 @@ public class Snoman_Move2 : MonoBehaviour
         }
         if (reverse)
         {
+            reverseitem.SetActive(true);
             startTime1 += Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
@@ -311,12 +345,13 @@ public class Snoman_Move2 : MonoBehaviour
             }
             if (startTime1 >= finishTime1)
             {
+                reverseitem.SetActive(false);
                 reverse = false;
             }
         }
        if (time)
         {
-
+            timeagainstitem.SetActive(true);
             startTime2 += Time.deltaTime;
 
             GameObject[] objArray = GameObject.FindGameObjectsWithTag("Car");
@@ -329,6 +364,7 @@ public class Snoman_Move2 : MonoBehaviour
 
             if (startTime2 >= finishTime2)
             {
+                timeagainstitem.SetActive(false);
                 time = false;
             }
         }

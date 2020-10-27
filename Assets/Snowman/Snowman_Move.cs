@@ -36,14 +36,26 @@ public class Snowman_Move : MonoBehaviour
 
     public GameObject heli; //헬리콥터 오브젝트
     public GameObject heartb;//깨진하트 오브젝트
+    public GameObject shielditem;//실드 
+    public GameObject timeagainstitem;//시간을 거스르는자
+    public GameObject reverseitem;//거꾸로
 
     // Start is called before the first frame update
     void Start()
     {
         bh = false; // 하트 안깨진 상태
         htimer = 0.0f;
+
         heartb = GameObject.Find("heartb");//깨진하트 오브젝트찾기
+        shielditem = GameObject.Find("shielditem");//실드 찾기
+        timeagainstitem = GameObject.Find("timeagainstitem");//시간을거스르는자 찾기
+        reverseitem= GameObject.Find("reverseitem");//거꾸로 찾기
+
         heartb.SetActive(false);
+        shielditem.SetActive(false);
+        timeagainstitem.SetActive(false);
+        reverseitem.SetActive(false);
+
         pos = transform.position; //현재 위치 받아오기
         reverse = false; //아이템 reverse 끄기
         time = false; //타임 변수 끄기
@@ -142,6 +154,7 @@ public class Snowman_Move : MonoBehaviour
                     pos = new Vector3(0, 1, -10);
                 if (gameObject.transform.position.z >= -6 && gameObject.transform.position.z < 0)
                     pos = new Vector3(0, 1, -6);
+
             }
             if (shield == false)
             {
@@ -178,7 +191,7 @@ public class Snowman_Move : MonoBehaviour
                 heart--;
 
                 startTime4 = Time.time;
-                finishTime4 = startTime4 + 1.3f;
+                finishTime4 = startTime4 + 1f;
                 bh = true;
             }
 
@@ -186,9 +199,11 @@ public class Snowman_Move : MonoBehaviour
         }
         if (shield)
         {
+            shielditem.SetActive(true);
             startTime3 += Time.deltaTime;
             if (startTime3 >= finishTime3)
             {
+                shielditem.SetActive(false);
                 shield = false;
             }
         }
@@ -264,6 +279,7 @@ public class Snowman_Move : MonoBehaviour
         }
         if (reverse)
         {
+            reverseitem.SetActive(true);
             startTime1 += Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
@@ -288,11 +304,13 @@ public class Snowman_Move : MonoBehaviour
             }
             if (startTime1 >= finishTime1)
             {
+                reverseitem.SetActive(false);
                 reverse = false;
             }
         }
         if (time)
         {
+            timeagainstitem.SetActive(true);
             startTime2 += Time.deltaTime;
 
             GameObject[] objArray = GameObject.FindGameObjectsWithTag("Car");
@@ -305,6 +323,7 @@ public class Snowman_Move : MonoBehaviour
 
             if (startTime2 >= finishTime2)
             {
+                timeagainstitem.SetActive(false);
                 time = false;
             }
         }
