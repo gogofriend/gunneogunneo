@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class Snowman_Move : MonoBehaviour
 {
+    bool bh;  //깨진하트 확인 변수
     bool reverse; //reverse 아이템 체크 변수
     bool time; //제한시간 체크 변수
     bool hole_col; //구멍 충돌 여부 확인
@@ -15,13 +16,17 @@ public class Snowman_Move : MonoBehaviour
     int heart; //생명 개수
     int arrow; //키보드 입력 값 저장
 
+    float htimer;//깨진하트 타이머
     float startTime1; //아이템 시간 측정용
     float startTime2; //아이템 시간 측정용
     float startTime3; //아이템 시간 측정용
+    float startTime4; //하트 시간 측정용
 
     float finishTime1; //아이템 시간 측정용
     float finishTime2; //아이템 시간 측정용
     float finishTime3; //아이템 시간 측정용
+    float finishTime4; //하트 시간 측정용
+
     bool shield; //실드 사용 여부 체크
     Vector3 pos; //눈사람 위치
     float step = 2; //눈사람 한걸음
@@ -30,10 +35,15 @@ public class Snowman_Move : MonoBehaviour
     public AudioClip jump; //오디오 점프
 
     public GameObject heli; //헬리콥터 오브젝트
+    public GameObject heartb;//깨진하트 오브젝트
 
     // Start is called before the first frame update
     void Start()
     {
+        bh = false; // 하트 안깨진 상태
+        htimer = 0.0f;
+        heartb = GameObject.Find("heartb");//깨진하트 오브젝트찾기
+        heartb.SetActive(false);
         pos = transform.position; //현재 위치 받아오기
         reverse = false; //아이템 reverse 끄기
         time = false; //타임 변수 끄기
@@ -42,13 +52,16 @@ public class Snowman_Move : MonoBehaviour
         tree_col = false; //나무 충돌 false로 초기화
         car_col = false;  //차 충돌 false로 초기화
 
+        
         startTime1 = 0;  //아이템 시간 변수 초기화
         startTime2 = 0;  //아이템 시간 변수 초기화
         startTime3 = 0;  //아이템 시간 변수 초기화
+        startTime4 = 0;  //깨진 하트 시간 변수 초기화
 
         finishTime1 = 0;  //아이템 시간 변수 초기화
         finishTime2 = 0;  //아이템 시간 변수 초기화
         finishTime3 = 0;  //아이템 시간 변수 초기화
+        finishTime4 = 0;  //깨진 하트 시간 변수 초기화
 
         heart = 3;  //생명 개수 3개로 초기화
         arrow = 0;  //방향키 0으로 초기화
@@ -56,11 +69,27 @@ public class Snowman_Move : MonoBehaviour
         audio = gameObject.AddComponent<AudioSource>();  //오디오 소스 받아오기
         audio.clip = jump;  //점프소리 넣기
         audio.loop = false;  //반복 안함
+
+        heartb.SetActive(false); //깨진하트 안보이게
     }
 
     // Update is called once per frame
     void Update()
     {
+        htimer += Time.deltaTime; //깨진하트 시간측정용        
+
+        if(bh==true)
+        {
+            startTime4 += Time.deltaTime;
+            heartb.SetActive(true);
+            if (startTime4 >= finishTime4)
+            {
+                heartb.SetActive(false);
+                bh = false;
+            }
+            
+        }
+        
         //휘청이지 않게 함
         if (arrow == 1) //위
         {
@@ -83,41 +112,37 @@ public class Snowman_Move : MonoBehaviour
 
         if (car_col == true)
         {
-
            if(shield)
-            { 
-                  
-                    pos -= new Vector3(1, 0, 0);
-                    //죽으면 가까운 그라운드로
-                    if (gameObject.transform.position.z >= -98 && gameObject.transform.position.z < -90)
-                        pos = new Vector3(0, 1, -98);
-                    if (gameObject.transform.position.z >= -90 && gameObject.transform.position.z < -86)
-                        pos = new Vector3(0, 1, -90);
-                    if (gameObject.transform.position.z >= -86 && gameObject.transform.position.z < -82)
-                        pos = new Vector3(0, 1, -86);
-                    if (gameObject.transform.position.z >= -82 && gameObject.transform.position.z < -73)
-                        pos = new Vector3(0, 1, -82);
-                    if (gameObject.transform.position.z >= -73 && gameObject.transform.position.z < -66)
-                        pos = new Vector3(0, 1, -72);
-                    if (gameObject.transform.position.z >= -66 && gameObject.transform.position.z < -58)
-                        pos = new Vector3(0, 1, -66);
-                    if (gameObject.transform.position.z >= -58 && gameObject.transform.position.z < -50)
-                        pos = new Vector3(0, 1, -58);
-                    if (gameObject.transform.position.z >= -50 && gameObject.transform.position.z < -37)
-                        pos = new Vector3(0, 1, -50);
-                    if (gameObject.transform.position.z >= -37 && gameObject.transform.position.z < -28)
-                        pos = new Vector3(0, 1, -36);
-                    if (gameObject.transform.position.z >= -28 && gameObject.transform.position.z < -20)
-                        pos = new Vector3(0, 1, -28);
-                    if (gameObject.transform.position.z >= -20 && gameObject.transform.position.z < -10)
-                        pos = new Vector3(0, 1, -20);
-                    if (gameObject.transform.position.z >= -10 && gameObject.transform.position.z < -6)
-                        pos = new Vector3(0, 1, -10);
-                    if (gameObject.transform.position.z >= -6 && gameObject.transform.position.z < 0)
-                        pos = new Vector3(0, 1, -6);
-
-
-                }
+            {
+                pos -= new Vector3(1, 0, 0);
+                //죽으면 가까운 그라운드로
+                if (gameObject.transform.position.z >= -98 && gameObject.transform.position.z < -90)
+                    pos = new Vector3(0, 1, -98);
+                if (gameObject.transform.position.z >= -90 && gameObject.transform.position.z < -86)
+                    pos = new Vector3(0, 1, -90);
+                if (gameObject.transform.position.z >= -86 && gameObject.transform.position.z < -82)
+                    pos = new Vector3(0, 1, -86);
+                if (gameObject.transform.position.z >= -82 && gameObject.transform.position.z < -73)
+                    pos = new Vector3(0, 1, -82);
+                if (gameObject.transform.position.z >= -73 && gameObject.transform.position.z < -66)
+                    pos = new Vector3(0, 1, -72);
+                if (gameObject.transform.position.z >= -66 && gameObject.transform.position.z < -58)
+                    pos = new Vector3(0, 1, -66);
+                if (gameObject.transform.position.z >= -58 && gameObject.transform.position.z < -50)
+                    pos = new Vector3(0, 1, -58);
+                if (gameObject.transform.position.z >= -50 && gameObject.transform.position.z < -37)
+                    pos = new Vector3(0, 1, -50);
+                if (gameObject.transform.position.z >= -37 && gameObject.transform.position.z < -28)
+                    pos = new Vector3(0, 1, -36);
+                if (gameObject.transform.position.z >= -28 && gameObject.transform.position.z < -20)
+                    pos = new Vector3(0, 1, -28);
+                if (gameObject.transform.position.z >= -20 && gameObject.transform.position.z < -10)
+                    pos = new Vector3(0, 1, -20);
+                if (gameObject.transform.position.z >= -10 && gameObject.transform.position.z < -6)
+                    pos = new Vector3(0, 1, -10);
+                if (gameObject.transform.position.z >= -6 && gameObject.transform.position.z < 0)
+                    pos = new Vector3(0, 1, -6);
+            }
             if (shield == false)
             {
                 pos -= new Vector3(1, 0, 0);
@@ -149,8 +174,12 @@ public class Snowman_Move : MonoBehaviour
                 if (gameObject.transform.position.z >= -6 && gameObject.transform.position.z < 0)
                     pos = new Vector3(0, 1, -6);
 
+                    
                 heart--;
-                Debug.Log("하트감소, 하트개수 : " + heart);
+
+                startTime4 = Time.time;
+                finishTime4 = startTime4 + 1.3f;
+                bh = true;
             }
 
             car_col = false;
@@ -160,7 +189,6 @@ public class Snowman_Move : MonoBehaviour
             startTime3 += Time.deltaTime;
             if (startTime3 >= finishTime3)
             {
-
                 shield = false;
             }
         }

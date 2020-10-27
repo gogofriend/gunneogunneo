@@ -12,6 +12,7 @@ TagManager:
   - shield
   - time
   - hole
+  - heartb
   layers:
   - Default
   - TransparentFX
