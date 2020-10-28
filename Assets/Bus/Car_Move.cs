@@ -15,7 +15,7 @@ public class Car_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position += (new Vector3(7, 0, 0) * Time.deltaTime);
+        gameObject.transform.position += (new Vector3(8, 0, 0) * Time.deltaTime);
         pos = gameObject.transform.position;
 
         if (pos.x > 20)

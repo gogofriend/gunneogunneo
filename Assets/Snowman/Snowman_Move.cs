@@ -317,9 +317,9 @@ public class Snowman_Move : MonoBehaviour
             GameObject[] objArray2 = GameObject.FindGameObjectsWithTag("Car2");
 
             for (int i = 0; i < objArray.Length; i++)
-                objArray[i].gameObject.transform.position -= (new Vector3(7, 0, 0) * Time.deltaTime);
+                objArray[i].gameObject.transform.position -= (new Vector3(8, 0, 0) * Time.deltaTime);
             for (int i = 0; i < objArray2.Length; i++)
-                objArray2[i].gameObject.transform.position += (new Vector3(7, 0, 0) * Time.deltaTime);
+                objArray2[i].gameObject.transform.position += (new Vector3(8, 0, 0) * Time.deltaTime);
 
             if (startTime2 >= finishTime2)
             {
