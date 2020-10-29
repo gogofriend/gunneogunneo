@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Car_Move : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject player; //눈사람 오브젝트 가져오는 변수
     Vector3 pos; //자동차의 위치변수
     public float speed; //자동차의 속도변수
     // Start is called before the first frame update
 
     void Start()
     {
-        player = GameObject.Find("Snowman");
+        player = GameObject.Find("Snowman"); //스노우맨 오브젝트 찾기
         speed = 6.5f; //초기 속도
     }
 

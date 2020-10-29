@@ -8804,7 +8804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4505103593165564595, guid: 0fbde5eb98f23104bae98d9e0c7a1149, type: 3}
       propertyPath: m_TagString
-      value: Car
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fbde5eb98f23104bae98d9e0c7a1149, type: 3}

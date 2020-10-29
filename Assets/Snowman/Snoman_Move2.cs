@@ -93,8 +93,8 @@ public class Snoman_Move2 : MonoBehaviour
     void Update()
     {
 
-        Car_Move carmovespeed = GameObject.FindGameObjectWithTag("Car").GetComponent<Car_Move>();
-        speed = carmovespeed.speed;
+        Car_Move carmovespeed = GameObject.FindGameObjectWithTag("Car").GetComponent<Car_Move>(); //Car_Move스크립트를 불러옴
+        speed = carmovespeed.speed; //Car_Move스크립트의 speed변수를 넣어줌
         htimer += Time.deltaTime; //깨진하트 시간측정용        
 
         if (bh == true) //깨진 하트가 나와야 하면

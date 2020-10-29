@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Car_Move2 : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject player; //눈사람 오브젝트 가져오는 변수
     Vector3 pos; //자동차의 위치변수
     public float speed; //자동차의 속도변수
     // Start is called before the first frame update
