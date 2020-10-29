@@ -331,6 +331,7 @@ public class Snoman_Move2 : MonoBehaviour
         if (pos.z > 250) //눈사람이 Finish Line에 도착하면
         {
             Score_Mng.score += Mathf.FloorToInt(Timer.timelimit); //게임 시간을 점수에 더함
+            Score_Mng.score += 150;
             Score_Mng.Save(); // 점수 데이터를 소팅 후 랭킹에 저장
             Load(); //랭킹 텍스트 업데이트
             SceneManager.LoadScene("Ranking"); //랭킹 씬을 불러옴
@@ -402,11 +403,11 @@ public class Snoman_Move2 : MonoBehaviour
     }
     public void Load() //랭킹 Panel의 text에 점수를 로드
     {
-        scoreData1.text = PlayerPrefs.GetInt("BestScore").ToString() + "초";
-        scoreData2.text = PlayerPrefs.GetInt("SecondScore").ToString() + "초";
-        scoreData3.text = PlayerPrefs.GetInt("ThirdScore").ToString() + "초";
-        scoreData4.text = PlayerPrefs.GetInt("FourthScore").ToString() + "초";
-        scoreData5.text = PlayerPrefs.GetInt("FifthScore").ToString() + "초";
+        scoreData1.text = PlayerPrefs.GetInt("BestScore").ToString() + "점";
+        scoreData2.text = PlayerPrefs.GetInt("SecondScore").ToString() + "점";
+        scoreData3.text = PlayerPrefs.GetInt("ThirdScore").ToString() + "점";
+        scoreData4.text = PlayerPrefs.GetInt("FourthScore").ToString() + "점";
+        scoreData5.text = PlayerPrefs.GetInt("FifthScore").ToString() + "점";
     }
     void OnTriggerEnter(Collider other) //충돌 구현
     {

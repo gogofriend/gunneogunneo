@@ -21,11 +21,11 @@ public class Score_Mng : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreData1.text = PlayerPrefs.GetInt("BestScore").ToString() + "초"; // 1위 점수 텍스트 내용 업데이트
-        scoreData2.text = PlayerPrefs.GetInt("SecondScore").ToString() + "초"; // 2위 점수 텍스트 내용 업데이트
-        scoreData3.text = PlayerPrefs.GetInt("ThirdScore").ToString() + "초"; // 3위 점수 텍스트 내용 업데이트
-        scoreData4.text = PlayerPrefs.GetInt("FourthScore").ToString() + "초";  // 4위 점수 텍스트 내용 업데이트
-        scoreData5.text = PlayerPrefs.GetInt("FifthScore").ToString() + "초"; // 5위 점수 텍스트 내용 업데이트
+        scoreData1.text = PlayerPrefs.GetInt("BestScore").ToString() + "점"; // 1위 점수 텍스트 내용 업데이트
+        scoreData2.text = PlayerPrefs.GetInt("SecondScore").ToString() + "점"; // 2위 점수 텍스트 내용 업데이트
+        scoreData3.text = PlayerPrefs.GetInt("ThirdScore").ToString() + "점"; // 3위 점수 텍스트 내용 업데이트
+        scoreData4.text = PlayerPrefs.GetInt("FourthScore").ToString() + "점";  // 4위 점수 텍스트 내용 업데이트
+        scoreData5.text = PlayerPrefs.GetInt("FifthScore").ToString() + "점"; // 5위 점수 텍스트 내용 업데이트
     }
 
     public static void Save()  //점수 데이터 저장

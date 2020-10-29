@@ -14,6 +14,6 @@ public class fifth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreData5.text = PlayerPrefs.GetInt("FifthScore").ToString() + "초"; //5위 데이터 로드
+        scoreData5.text = PlayerPrefs.GetInt("FifthScore").ToString() + "점"; //5위 데이터 로드
     }
 }

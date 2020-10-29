@@ -15,7 +15,7 @@ public class first : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreData1.text = PlayerPrefs.GetInt("BestScore").ToString() + "초"; //1위 데이터 로드
+        scoreData1.text = PlayerPrefs.GetInt("BestScore").ToString() + "점"; //1위 데이터 로드
 
     }
 }
