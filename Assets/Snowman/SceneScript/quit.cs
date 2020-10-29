@@ -14,7 +14,7 @@ public class quit : MonoBehaviour
 
     public void OnClickExit()
     {
-        Application.Quit();
+        SceneManager.LoadScene("GameOverCheck");
     }
 
     // Update is called once per frame

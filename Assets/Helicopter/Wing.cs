@@ -13,6 +13,6 @@ public class Wing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.localRotation *= Quaternion.Euler(0, 8, 0);
+        gameObject.transform.localRotation *= Quaternion.Euler(0, 8, 0); // wing 회전 효과
     }
 }

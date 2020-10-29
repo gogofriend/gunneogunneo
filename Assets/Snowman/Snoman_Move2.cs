@@ -16,11 +16,11 @@ public class Snoman_Move2 : MonoBehaviour
     int heart; //생명 개수
     int arrow; //키보드 입력 값 저장
 
-    public Text scoreData1;
-    public Text scoreData2;
-    public Text scoreData3;
-    public Text scoreData4;
-    public Text scoreData5;
+    public Text scoreData1; //랭킹 1위
+    public Text scoreData2; //랭킹 2위
+    public Text scoreData3; //랭킹 3위
+    public Text scoreData4; //랭킹 4위
+    public Text scoreData5; //랭킹 5위
 
     float htimer; //깨진하트 타이머
     float startTime1; //아이템 시간 측정용
@@ -36,10 +36,6 @@ public class Snoman_Move2 : MonoBehaviour
     bool shield; //실드 사용 여부 체크
     Vector3 pos; //눈사람 위치
     float step = 2; //눈사람 한걸음
-
-    Vector3 holepos;
-    Vector3 treepos;
-    Collider obc;
 
     AudioSource audio; //오디오 변수
     public AudioClip jump; //오디오 점프
@@ -188,59 +184,50 @@ public class Snoman_Move2 : MonoBehaviour
             }
             car_col = false; //차 충돌 여부 변수를 다시 false로 만들어줌
         }
-        if (shield)
+
+        if (tree_col == true) //나무와 충돌했을 때 눈사람 위치 설정
         {
-            shielditem.SetActive(true);
-            startTime3 += Time.deltaTime;
-            if (startTime3 >= finishTime3)
-            {
-                shielditem.SetActive(false);
-                shield = false;
-            }
-        }
-        if (tree_col == true)
-        {
-            if (arrow == 1)
+            if (arrow == 1) //앞으로 가다 부딪혔을 때
             {
                 pos -= new Vector3(0, 0, 2);
             }
-            if (arrow == 2)
+            if (arrow == 2) //뒤로 가다 부딪혔을 때
             {
                 pos += new Vector3(0, 0, 2);
             }
-            if (arrow == 3)
+            if (arrow == 3) //오른쪽으로 가다 부딪혔을 때
             {
                 pos -= new Vector3(2, 0, 0);
             }
-            if (arrow == 4)
+            if (arrow == 4) //왼쪽으로 가다 부딪혔을 때
             {
                 pos += new Vector3(2, 0, 0);
             }
-            tree_col = false;
+            tree_col = false; //나무 충돌 여부 변수를 다시 false로 만들어줌
         }
 
-        if (hole_col == true)
+        if (hole_col == true) //폭탄 터진 구멍과 충돌했을 때 눈사람 위치 설정
         {
-            if (arrow == 1)
+            if (arrow == 1) //앞으로 가다 부딪혔을 때
             {
                 pos -= new Vector3(0, 0, 2);
             }
-            if (arrow == 2)
+            if (arrow == 2) //뒤로 가다 부딪혔을 때
             {
                 pos += new Vector3(0, 0, 2);
             }
-            if (arrow == 3)
+            if (arrow == 3) //오른쪽으로 가다 부딪혔을 때
             {
                 pos -= new Vector3(2, 0, 0);
             }
-            if (arrow == 4)
+            if (arrow == 4) //왼쪽으로 가다 부딪혔을 때
             {
                 pos += new Vector3(2, 0, 0);
             }
-            hole_col = false;
+            hole_col = false; //구멍 충돌 여부 변수를 다시 false로 만들어줌
         }
 
-        if (reverse == false)
+        if (reverse == false) //'거꾸로' 아이템이 작동하지 않을 때 스노우맨의 이동 구현
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -267,9 +254,9 @@ public class Snoman_Move2 : MonoBehaviour
                 arrow = 4;
             }
         }
-        if (reverse)
+        if (reverse) //'거꾸로' 아이템이 작동할 때 스노우맨의 이동 구현
         {
-            reverseitem.SetActive(true);
+            reverseitem.SetActive(true); //거꾸로 아이템 활성화
             startTime1 += Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
@@ -292,48 +279,58 @@ public class Snoman_Move2 : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, -90, 0);
                 pos += transform.forward * step;
             }
-            if (startTime1 >= finishTime1)
+            if (startTime1 >= finishTime1) //제한 시간이 끝나면
             {
-                reverseitem.SetActive(false);
-                reverse = false;
+                reverseitem.SetActive(false); //아이템 비활성화
+                reverse = false; //'거꾸로' 아이템 체크 변수를 다시 false로 만들어줌
             }
         }
-       if (time)
+        if (time) //'시간을 거스르는 자' 아이템이 작동할 때 스노우맨의 이동 구현
         {
-            timeagainstitem.SetActive(true);
+            timeagainstitem.SetActive(true); //시간을 거스르는 자 아이템 활성화
             startTime2 += Time.deltaTime;
 
-            GameObject[] objArray = GameObject.FindGameObjectsWithTag("Car");
-            GameObject[] objArray2 = GameObject.FindGameObjectsWithTag("Car2");
+            GameObject[] objArray = GameObject.FindGameObjectsWithTag("Car"); //오른쪽->왼쪽으로 이동하는 차들에 Car 태그 설정
+            GameObject[] objArray2 = GameObject.FindGameObjectsWithTag("Car2"); //왼쪽->오른쪽으로 이동하는 차들에 Car2 태그 설정
 
             for (int i = 0; i < objArray.Length; i++)
-                objArray[i].gameObject.transform.position -= (new Vector3(8, 0, 0) * Time.deltaTime);
+                objArray[i].gameObject.transform.position -= (new Vector3(8, 0, 0) * Time.deltaTime); //Car 태그의 차들을 멈춤
             for (int i = 0; i < objArray2.Length; i++)
-                objArray2[i].gameObject.transform.position += (new Vector3(8, 0, 0) * Time.deltaTime);
+                objArray2[i].gameObject.transform.position += (new Vector3(8, 0, 0) * Time.deltaTime); //Car2 태그의 차들을 멈춤
 
-            if (startTime2 >= finishTime2)
+            if (startTime2 >= finishTime2) //제한 시간이 끝나면
             {
-                timeagainstitem.SetActive(false);
-                time = false;
+                timeagainstitem.SetActive(false); //아이템 비활성화
+                time = false; //'시간을 거스르는 자' 아이템 체크 변수를 다시 false로 만들어줌
             }
         }
-   
-
-        if (pos.x > 10)
-            pos.x = 10;
-        if (pos.x < -14)
-            pos.x = -14;
-        if (pos.z < 52)
-            pos.z = 52;
-
-        if (pos.z > 250)
+        if (shield) //'실드' 아이템이 작동할 때
         {
-            Score_Mng.score += Mathf.FloorToInt(Timer.timelimit);
-            Score_Mng.Save();
-            Load();
-            SceneManager.LoadScene("Ranking");
+            shielditem.SetActive(true); //실드 아이템 활성화
+            startTime3 += Time.deltaTime;
+            if (startTime3 >= finishTime3) //제한 시간이 끝나면
+            {
+                shielditem.SetActive(false); //아이템 비활성화
+                shield = false;//'실드' 아이템 체크 변수를 다시 false로 만들어줌
+            }
         }
 
+        if (pos.x > 10) //맵의 x축 제한범위 설정
+            pos.x = 10;
+        if (pos.x < -14) //맵의 x축 제한범위 설정
+            pos.x = -14;
+        if (pos.z < 52) //맵의 z축 제한범위 설정
+            pos.z = 52;
+
+        if (pos.z > 250) //눈사람이 Finish Line에 도착하면
+        {
+            Score_Mng.score += Mathf.FloorToInt(Timer.timelimit); //게임 시간을 점수에 더함
+            Score_Mng.Save();
+            Load();
+            SceneManager.LoadScene("Ranking"); //랭킹 씬을 불러옴
+        }
+
+        //눈사람 이동 효과음 적용
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             audio.Play();
@@ -351,6 +348,7 @@ public class Snoman_Move2 : MonoBehaviour
             audio.Play();
         }
 
+        //눈사람의 이동에 따른 헬리콥터 위치 변화 설정
         if (gameObject.transform.position.z > 52 && gameObject.transform.position.z < 56)
             heli.transform.position = new Vector3(0, 8, 58.1f);
         if (gameObject.transform.position.z > 58 && gameObject.transform.position.z < 68)
@@ -394,50 +392,6 @@ public class Snoman_Move2 : MonoBehaviour
         if (gameObject.transform.position.z > 244 && gameObject.transform.position.z < 248)
             heli.transform.position = new Vector3(2, 8, 250.1f);
 
-        /*
-        if (gameObject.transform.position.z >= 52 && gameObject.transform.position.z < 58)
-            heli.transform.position = new Vector3(-1.199999f, 8, 58.1f);
-        if (gameObject.transform.position.z >= 58 && gameObject.transform.position.z < 69)
-            heli.transform.position = new Vector3(-1.199999f, 8, 69.1f);
-        if (gameObject.transform.position.z >= 69 && gameObject.transform.position.z < 83)
-            heli.transform.position = new Vector3(-1.199999f, 8, 83.1f);
-        if (gameObject.transform.position.z >= 83 && gameObject.transform.position.z < 96)
-            heli.transform.position = new Vector3(-1.199999f, 8, 96.1f);
-        if (gameObject.transform.position.z >= 96 && gameObject.transform.position.z < 102)
-            heli.transform.position = new Vector3(-1.199999f, 8, 102.1f);
-        if (gameObject.transform.position.z >= 102 && gameObject.transform.position.z < 110)
-            heli.transform.position = new Vector3(-1.199999f, 8, 110.1f);
-        if (gameObject.transform.position.z >= 110 && gameObject.transform.position.z < 116)
-            heli.transform.position = new Vector3(-1.199999f, 8, 116.1f);
-        if (gameObject.transform.position.z >= 116 && gameObject.transform.position.z < 122)
-            heli.transform.position = new Vector3(-1.199999f, 8, 122.1f);
-        if (gameObject.transform.position.z >= 122 && gameObject.transform.position.z < 136)
-            heli.transform.position = new Vector3(-1.199999f, 8, 136.1f);
-        if (gameObject.transform.position.z >= 136 && gameObject.transform.position.z < 142)
-            heli.transform.position = new Vector3(-1.199999f, 8, 142.1f);
-        if (gameObject.transform.position.z >= 142 && gameObject.transform.position.z < 152)
-            heli.transform.position = new Vector3(-1.199999f, 8, 152.1f);
-        if (gameObject.transform.position.z >= 152 && gameObject.transform.position.z < 162)
-            heli.transform.position = new Vector3(-1.199999f, 8, 162.1f);
-        if (gameObject.transform.position.z >= 162 && gameObject.transform.position.z < 180)
-            heli.transform.position = new Vector3(-1.199999f, 8, 180.1f);
-        if (gameObject.transform.position.z >= 180 && gameObject.transform.position.z < 192)
-            heli.transform.position = new Vector3(-1.199999f, 8, 192.1f);
-        if (gameObject.transform.position.z >= 192 && gameObject.transform.position.z < 202)
-            heli.transform.position = new Vector3(-1.199999f, 8, 202.1f);
-        if (gameObject.transform.position.z >= 202 && gameObject.transform.position.z < 212)
-            heli.transform.position = new Vector3(-1.199999f, 8, 212.1f);
-        if (gameObject.transform.position.z >= 212 && gameObject.transform.position.z < 224)
-            heli.transform.position = new Vector3(-1.199999f, 8, 224.1f);
-        if (gameObject.transform.position.z >= 224 && gameObject.transform.position.z < 232)
-            heli.transform.position = new Vector3(-1.199999f, 8, 232.1f);
-        if (gameObject.transform.position.z >= 232 && gameObject.transform.position.z < 240)
-            heli.transform.position = new Vector3(-1.199999f, 8, 240.1f);
-        if (gameObject.transform.position.z >= 240 && gameObject.transform.position.z < 244)
-            heli.transform.position = new Vector3(-1.199999f, 8, 244.1f);
-        if (gameObject.transform.position.z >= 244 && gameObject.transform.position.z < 250)
-            heli.transform.position = new Vector3(-1.199999f, 8, 250.1f);
-        */
         transform.position = pos;
     }
     public void Load() //랭킹 Panel의 text에 점수를 로드
@@ -448,62 +402,57 @@ public class Snoman_Move2 : MonoBehaviour
         scoreData4.text = PlayerPrefs.GetInt("FourthScore").ToString() + "초";
         scoreData5.text = PlayerPrefs.GetInt("FifthScore").ToString() + "초";
     }
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other) //충돌 구현
     {
-        if (other.gameObject.tag == "Car2")
+        if (other.gameObject.tag == "Car2") //Car2 태그가 된 차와 충돌했을 경우
         {
-            car_col = true;
+            car_col = true; //차 충돌 여부 변수를 true로 만들어줌
         }
-        if (other.gameObject.tag == "Car")
+        if (other.gameObject.tag == "Car") //Car 태그가 된 차와 충돌했을 경우
         {
-            car_col = true;
+            car_col = true; //차 충돌 여부 변수를 true로 만들어줌
         }
-        if (other.gameObject.tag == "reverse")
+        if (other.gameObject.tag == "reverse") //'거꾸로'아이템을 먹은 경우
         {
             startTime1 = Time.time;
-            finishTime1 = startTime1 + 3f;
-            reverse = true;
+            finishTime1 = startTime1 + 3f; //3초동안
+            reverse = true; //'거꾸로' 아이템 동작
 
-            Destroy(other.gameObject, 0);
+            Destroy(other.gameObject, 0); //제한 시간 안에 아이템을 먹지 않으면 소멸
 
         }
         if (other.gameObject.tag == "time")
         {
 
             startTime2 = Time.time;
-            finishTime2 = startTime2 + 3f;
-            time = true;
+            finishTime2 = startTime2 + 3f; //3초동안
+            time = true; //'시간을 거스르는 자' 아이템 동작
 
-            Destroy(other.gameObject, 0);
+            Destroy(other.gameObject, 0); //제한 시간 안에 아이템을 먹지 않으면 소멸
 
         }
         if (other.gameObject.tag == "shield")
         {
             startTime3 = Time.time;
-            finishTime3 = startTime3 + 3f;
-            shield = true;
+            finishTime3 = startTime3 + 3f; //3초동안
+            shield = true; //'실드' 아이템 동작
 
-            Destroy(other.gameObject, 0);
+            Destroy(other.gameObject, 0); //제한 시간 안에 아이템을 먹지 않으면 소멸
         }
 
-        if (other.gameObject.tag == "bomb")
+        if (other.gameObject.tag == "bomb") //'폭탄'아이템을 먹은 경우
         {
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("GameOver"); //게임오버 씬을 불러옴
         }
 
-        if (other.gameObject.tag == "hole")
+        if (other.gameObject.tag == "hole") //폭탄 터진 구멍과 충돌한 경우
         {
-            hole_col = true;
-            Debug.Log("hole");
-            holepos = other.gameObject.transform.position;
+            hole_col = true; //구멍 충돌 여부 변수를 true로 만들어줌
         }
 
-        if (other.gameObject.tag == "Tree")
+        if (other.gameObject.tag == "Tree") //나무와 충돌한 경우
         {
-            tree_col = true;
-            Debug.Log("tree");
-            treepos = other.gameObject.transform.position;
-
+            tree_col = true; //나무 충돌 여부 변수를 true로 만들어줌
         }
 
 
@@ -515,7 +464,7 @@ public class Snoman_Move2 : MonoBehaviour
         style.fontSize = 60;
         style.normal.textColor = Color.black;
 
-        string str = "      X " + heart;
-        GUI.Label(new Rect(25, 30, 100, 20), str, style);
+        string str = "      X " + heart; //좌측 상단 하트의 개수 표시
+        GUI.Label(new Rect(25, 30, 100, 20), str, style); //텍스트 위치, 크기, 색 설정
     }
 }

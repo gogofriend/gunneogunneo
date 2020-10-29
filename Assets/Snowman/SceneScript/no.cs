@@ -13,7 +13,7 @@ public class no : MonoBehaviour
 
     public void onStart()
     {
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene("GameOverCheck");
     }
 
     // Update is called once per frame
