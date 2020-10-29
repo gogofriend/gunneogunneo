@@ -174,23 +174,25 @@ public class Snowman_Move : MonoBehaviour
 
         if (tree_col == true) //나무와 충돌했을 때 눈사람 위치 설정
         {
-            if (arrow == 1) //앞으로 가다 부딪혔을 때
-            {
-                pos -= new Vector3(0, 0, 2);
-            }
-            if (arrow == 2) //뒤로 가다 부딪혔을 때
-            {
-                pos += new Vector3(0, 0, 2);
-            }
-            if (arrow == 3) //오른쪽으로 가다 부딪혔을 때
-            {
-                pos -= new Vector3(2, 0, 0);
-            }
-            if (arrow == 4) //왼쪽으로 가다 부딪혔을 때
-            {
-                pos += new Vector3(2, 0, 0);
-            }
-            tree_col = false; //나무 충돌 여부 변수를 다시 false로 만들어줌
+          
+                if (arrow == 1) //앞으로 가다 부딪혔을 때
+                {
+                    pos -= new Vector3(0, 0, 2);
+                }
+                if (arrow == 2) //뒤로 가다 부딪혔을 때
+                {
+                    pos += new Vector3(0, 0, 2);
+                }
+                if (arrow == 3) //오른쪽으로 가다 부딪혔을 때
+                {
+                    pos -= new Vector3(2, 0, 0);
+                }
+                if (arrow == 4) //왼쪽으로 가다 부딪혔을 때
+                {
+                    pos += new Vector3(2, 0, 0);
+                }
+                tree_col = false; //나무 충돌 여부 변수를 다시 false로 만들어줌
+           
         }
 
         if (hole_col == true) //폭탄 터진 구멍과 충돌했을 때 눈사람 위치 설정
@@ -250,22 +252,25 @@ public class Snowman_Move : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                 pos += transform.forward * step;
-
+                arrow = 1;
             }
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 180, 0);
                 pos += transform.forward * step;
+                arrow = 2;
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 transform.rotation = Quaternion.Euler(0, 90, 0);
                 pos += transform.forward * step;
+                arrow = 3;
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 transform.rotation = Quaternion.Euler(0, -90, 0);
                 pos += transform.forward * step;
+                arrow = 4;
             }
             if (startTime1 >= finishTime1) //제한 시간이 끝나면
             {
