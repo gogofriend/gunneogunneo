@@ -49,12 +49,7 @@ public class Snowman_Move : MonoBehaviour
         heartb = GameObject.Find("heartb");//깨진하트 오브젝트찾기
         shielditem = GameObject.Find("shielditem");//실드 찾기
         timeagainstitem = GameObject.Find("timeagainstitem");//시간을거스르는자 찾기
-        reverseitem= GameObject.Find("reverseitem");//거꾸로 찾기
-
-        heartb.SetActive(false);
-        shielditem.SetActive(false);
-        timeagainstitem.SetActive(false);
-        reverseitem.SetActive(false);
+        reverseitem = GameObject.Find("reverseitem");//거꾸로 찾기
 
         pos = transform.position; //현재 위치 받아오기
         reverse = false; //아이템 reverse 끄기
@@ -64,7 +59,7 @@ public class Snowman_Move : MonoBehaviour
         tree_col = false; //나무 충돌 false로 초기화
         car_col = false;  //차 충돌 false로 초기화
 
-        
+
         startTime1 = 0;  //아이템 시간 변수 초기화
         startTime2 = 0;  //아이템 시간 변수 초기화
         startTime3 = 0;  //아이템 시간 변수 초기화
@@ -93,7 +88,7 @@ public class Snowman_Move : MonoBehaviour
     {
         htimer += Time.deltaTime; //깨진하트 시간측정용        
 
-        if(bh==true) //깨진 하트가 나와야 하면
+        if (bh == true) //깨진 하트가 나와야 하면
         {
             startTime4 += Time.deltaTime;
             heartb.SetActive(true); //깨진 하트 아이콘 활성화
@@ -102,9 +97,9 @@ public class Snowman_Move : MonoBehaviour
                 heartb.SetActive(false); //깨진 하트 아이콘 비활성화
                 bh = false; //깨진 하트 체크 변수를 다시 false로 만들어줌
             }
-            
+
         }
-        
+
         //눈사람이 충돌했을 때 휘청이지 않게 함
         if (arrow == 1) //위
         {
@@ -127,7 +122,7 @@ public class Snowman_Move : MonoBehaviour
 
         if (car_col == true) //차와 충돌하면
         {
-           if(shield) //'실드' 아이템이 작동중이면
+            if (shield) //'실드' 아이템이 작동중이면
             {
                 //목숨이 줄어들지 않고 장애물을 통과해서 지나간다
             }
@@ -161,7 +156,7 @@ public class Snowman_Move : MonoBehaviour
                 if (gameObject.transform.position.z >= -6 && gameObject.transform.position.z < 0)
                     pos = new Vector3(0, 1, -6);
 
-                    
+
                 heart--; //생명을 차감함
 
                 startTime4 = Time.time;
@@ -174,25 +169,25 @@ public class Snowman_Move : MonoBehaviour
 
         if (tree_col == true) //나무와 충돌했을 때 눈사람 위치 설정
         {
-          
-                if (arrow == 1) //앞으로 가다 부딪혔을 때
-                {
-                    pos -= new Vector3(0, 0, 2);
-                }
-                if (arrow == 2) //뒤로 가다 부딪혔을 때
-                {
-                    pos += new Vector3(0, 0, 2);
-                }
-                if (arrow == 3) //오른쪽으로 가다 부딪혔을 때
-                {
-                    pos -= new Vector3(2, 0, 0);
-                }
-                if (arrow == 4) //왼쪽으로 가다 부딪혔을 때
-                {
-                    pos += new Vector3(2, 0, 0);
-                }
-                tree_col = false; //나무 충돌 여부 변수를 다시 false로 만들어줌
-           
+
+            if (arrow == 1) //앞으로 가다 부딪혔을 때
+            {
+                pos -= new Vector3(0, 0, 2);
+            }
+            if (arrow == 2) //뒤로 가다 부딪혔을 때
+            {
+                pos += new Vector3(0, 0, 2);
+            }
+            if (arrow == 3) //오른쪽으로 가다 부딪혔을 때
+            {
+                pos -= new Vector3(2, 0, 0);
+            }
+            if (arrow == 4) //왼쪽으로 가다 부딪혔을 때
+            {
+                pos += new Vector3(2, 0, 0);
+            }
+            tree_col = false; //나무 충돌 여부 변수를 다시 false로 만들어줌
+
         }
 
         if (hole_col == true) //폭탄 터진 구멍과 충돌했을 때 눈사람 위치 설정
@@ -367,7 +362,7 @@ public class Snowman_Move : MonoBehaviour
             heli.transform.position = new Vector3(-4.000001f, 8, -6);
         if (gameObject.transform.position.z > -6 && gameObject.transform.position.z < 2)
             heli.transform.position = new Vector3(-4.000001f, 8, 0);
-        
+
         transform.position = pos;
     }
     void OnTriggerEnter(Collider other) //충돌 구현
