@@ -1067,6 +1067,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7608864124306519061, guid: 12d277bdcb17b4243bdf5d6494c31901, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -7608864124306519061, guid: 12d277bdcb17b4243bdf5d6494c31901, type: 3}
+      propertyPath: m_Size.z
+      value: 1.7
+      objectReference: {fileID: 0}
     - target: {fileID: 744761757919038018, guid: 12d277bdcb17b4243bdf5d6494c31901, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.6099987
@@ -1952,6 +1960,10 @@ PrefabInstance:
     - target: {fileID: 4283861085957098833, guid: 424e28e2261aa6f4d9ebae3cc95aa68c, type: 3}
       propertyPath: m_TagString
       value: Car2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881331863019266675, guid: 424e28e2261aa6f4d9ebae3cc95aa68c, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8297589716545134085, guid: 424e28e2261aa6f4d9ebae3cc95aa68c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10766,6 +10778,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.6000003
       objectReference: {fileID: 0}
+    - target: {fileID: 3643667924791162663, guid: 51f428021ba61724983c3ffb377813c0, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3643667924791162663, guid: 51f428021ba61724983c3ffb377813c0, type: 3}
+      propertyPath: m_Center.x
+      value: -3.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7704073399705780202, guid: 51f428021ba61724983c3ffb377813c0, type: 3}
       propertyPath: m_Name
       value: Car 4 (8)
@@ -16861,6 +16881,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2326321372186956092, guid: ea000916147985d418540641f05ccb1b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2326321372186956092, guid: ea000916147985d418540641f05ccb1b, type: 3}
+      propertyPath: m_Center.x
+      value: -3.6
+      objectReference: {fileID: 0}
     - target: {fileID: 4317400509785865360, guid: ea000916147985d418540641f05ccb1b, type: 3}
       propertyPath: m_Name
       value: Car 5 (9)
@@ -18482,6 +18510,10 @@ PrefabInstance:
     - target: {fileID: 2649997002865853673, guid: 49e2ef6807189d445a588d0717e366de, type: 3}
       propertyPath: m_TagString
       value: Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931815076203586204, guid: 49e2ef6807189d445a588d0717e366de, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7823613660779485117, guid: 49e2ef6807189d445a588d0717e366de, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20617,6 +20649,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7030713393802228800, guid: 1b283cdeac123644084470292553c8cd, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2196717316131543171, guid: 1b283cdeac123644084470292553c8cd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.7
