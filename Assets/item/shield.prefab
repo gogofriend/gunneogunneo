@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   v: 0
   isFalling: 1
-  hole: {fileID: 2637668783481577501, guid: 40d7963cb27464246a938827436107f5, type: 3}
+  hole: {fileID: 0}
 --- !u!54 &4086898494059397214
 Rigidbody:
   m_ObjectHideFlags: 0

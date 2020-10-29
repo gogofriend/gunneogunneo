@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 public class Snowman_Move : MonoBehaviour
 {
     bool bh;  //깨진하트 확인 변수
-    bool reverse; //reverse 아이템 체크 변수
-    bool time; //제한시간 체크 변수
+    bool reverse; //거꾸로 아이템 체크 변수
+    bool time; //시간을 거스르는 자 아이템 체크 변수
     bool hole_col; //구멍 충돌 여부 확인
     bool tree_col;//나무 충돌 여부 확인
     bool car_col; //차 충돌 여부 확인
@@ -44,7 +44,7 @@ public class Snowman_Move : MonoBehaviour
     void Start()
     {
         bh = false; // 하트 안깨진 상태
-        htimer = 0.0f;
+        htimer = 0.0f; //깨진 하트 보여지는 시간 측정 변수
 
         heartb = GameObject.Find("heartb");//깨진하트 오브젝트찾기
         shielditem = GameObject.Find("shielditem");//실드 찾기
@@ -83,6 +83,9 @@ public class Snowman_Move : MonoBehaviour
         audio.loop = false;  //반복 안함
 
         heartb.SetActive(false); //깨진하트 안보이게
+        shielditem.SetActive(false); //실드아이템 비활성화
+        timeagainstitem.SetActive(false); //시간을 거스르는 자 아이템 비활성화
+        reverseitem.SetActive(false); //거꾸로 아이템 비활성화
     }
 
     // Update is called once per frame
@@ -90,19 +93,19 @@ public class Snowman_Move : MonoBehaviour
     {
         htimer += Time.deltaTime; //깨진하트 시간측정용        
 
-        if(bh==true)
+        if(bh==true) //깨진 하트가 나와야 하면
         {
             startTime4 += Time.deltaTime;
-            heartb.SetActive(true);
-            if (startTime4 >= finishTime4)
+            heartb.SetActive(true); //깨진 하트 활성화
+            if (startTime4 >= finishTime4) //깨진 하트가 보여지는 시간이 끝나면
             {
-                heartb.SetActive(false);
-                bh = false;
+                heartb.SetActive(false); //깨진 하트 비활성화
+                bh = false; //깨진 하트 체크 변수를 다시 false로 만들어줌
             }
             
         }
         
-        //휘청이지 않게 함
+        //눈사람이 충돌했을 때 휘청이지 않게 함
         if (arrow == 1) //위
         {
             gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
@@ -119,47 +122,18 @@ public class Snowman_Move : MonoBehaviour
         {
             gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
         }
-        if (heart == 0)
-            SceneManager.LoadScene("GameOver");
+        if (heart == 0) //생명이 0이 되면
+            SceneManager.LoadScene("GameOver"); //게임오버 씬을 불러옴
 
-        if (car_col == true)
+        if (car_col == true) //차와 충돌하면
         {
-           if(shield)
+           if(shield) //'실드' 아이템이 작동중이면
             {
-                pos -= new Vector3(1, 0, 0);
-                //죽으면 가까운 그라운드로
-                if (gameObject.transform.position.z >= -98 && gameObject.transform.position.z < -90)
-                    pos = new Vector3(0, 1, -98);
-                if (gameObject.transform.position.z >= -90 && gameObject.transform.position.z < -86)
-                    pos = new Vector3(0, 1, -90);
-                if (gameObject.transform.position.z >= -86 && gameObject.transform.position.z < -82)
-                    pos = new Vector3(0, 1, -86);
-                if (gameObject.transform.position.z >= -82 && gameObject.transform.position.z < -73)
-                    pos = new Vector3(0, 1, -82);
-                if (gameObject.transform.position.z >= -73 && gameObject.transform.position.z < -66)
-                    pos = new Vector3(0, 1, -72);
-                if (gameObject.transform.position.z >= -66 && gameObject.transform.position.z < -58)
-                    pos = new Vector3(0, 1, -66);
-                if (gameObject.transform.position.z >= -58 && gameObject.transform.position.z < -50)
-                    pos = new Vector3(0, 1, -58);
-                if (gameObject.transform.position.z >= -50 && gameObject.transform.position.z < -37)
-                    pos = new Vector3(0, 1, -50);
-                if (gameObject.transform.position.z >= -37 && gameObject.transform.position.z < -28)
-                    pos = new Vector3(0, 1, -36);
-                if (gameObject.transform.position.z >= -28 && gameObject.transform.position.z < -20)
-                    pos = new Vector3(0, 1, -28);
-                if (gameObject.transform.position.z >= -20 && gameObject.transform.position.z < -10)
-                    pos = new Vector3(0, 1, -20);
-                if (gameObject.transform.position.z >= -10 && gameObject.transform.position.z < -6)
-                    pos = new Vector3(0, 1, -10);
-                if (gameObject.transform.position.z >= -6 && gameObject.transform.position.z < 0)
-                    pos = new Vector3(0, 1, -6);
-
+                //목숨이 줄어들지 않고 장애물을 통과해서 지나간다
             }
-            if (shield == false)
+            if (shield == false) //'실드' 아이템이 작동중이지 않으면
             {
-                pos -= new Vector3(1, 0, 0);
-                //죽으면 가까운 그라운드로
+                //죽으면 눈사람을 가까운 그라운드로 리스폰함
                 if (gameObject.transform.position.z >= -98 && gameObject.transform.position.z < -90)
                     pos = new Vector3(0, 1, -98);
                 if (gameObject.transform.position.z >= -90 && gameObject.transform.position.z < -86)
@@ -188,69 +162,60 @@ public class Snowman_Move : MonoBehaviour
                     pos = new Vector3(0, 1, -6);
 
                     
-                heart--;
+                heart--; //생명을 차감함
 
                 startTime4 = Time.time;
-                finishTime4 = startTime4 + 1f;
-                bh = true;
+                finishTime4 = startTime4 + 1f; //1초동안
+                bh = true; //깨진 하트 보여짐
             }
 
-            car_col = false;
+            car_col = false; //차 충돌 여부 변수를 다시 false로 만들어줌
         }
-        if (shield)
+
+        if (tree_col == true) //나무와 충돌했을 때 눈사람 위치 설정
         {
-            shielditem.SetActive(true);
-            startTime3 += Time.deltaTime;
-            if (startTime3 >= finishTime3)
-            {
-                shielditem.SetActive(false);
-                shield = false;
-            }
-        }
-        if (tree_col == true)
-        {
-            if (arrow == 1)
+            if (arrow == 1) //앞으로 가다 부딪혔을 때
             {
                 pos -= new Vector3(0, 0, 2);
             }
-            if (arrow == 2)
+            if (arrow == 2) //뒤로 가다 부딪혔을 때
             {
                 pos += new Vector3(0, 0, 2);
             }
-            if (arrow == 3)
+            if (arrow == 3) //오른쪽으로 가다 부딪혔을 때
             {
                 pos -= new Vector3(2, 0, 0);
             }
-            if (arrow == 4)
+            if (arrow == 4) //왼쪽으로 가다 부딪혔을 때
             {
                 pos += new Vector3(2, 0, 0);
             }
-            tree_col = false;
+            tree_col = false; //나무 충돌 여부 변수를 다시 false로 만들어줌
         }
 
-        if (hole_col == true)
+        if (hole_col == true) //폭탄 터진 구멍과 충돌했을 때 눈사람 위치 설정
         {
-            if (arrow == 1)
+            if (arrow == 1) //앞으로 가다 부딪혔을 때
             {
                 pos -= new Vector3(0, 0, 2);
             }
-            if (arrow == 2)
+            if (arrow == 2) //뒤로 가다 부딪혔을 때
             {
                 pos += new Vector3(0, 0, 2);
             }
-            if (arrow == 3)
+            if (arrow == 3) //오른쪽으로 가다 부딪혔을 때
             {
                 pos -= new Vector3(2, 0, 0);
             }
-            if (arrow == 4)
+            if (arrow == 4) //왼쪽으로 가다 부딪혔을 때
             {
                 pos += new Vector3(2, 0, 0);
             }
-            hole_col = false;
+            hole_col = false; //구멍 충돌 여부 변수를 다시 false로 만들어줌
         }
 
 
-        if (reverse == false)
+        if (reverse == false) //'거꾸로' 아이템이 작동하지 않을 때 스노우맨의 이동 구현
         {
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -277,9 +242,9 @@ public class Snowman_Move : MonoBehaviour
                 arrow = 4;
             }
         }
-        if (reverse)
+        if (reverse) //'거꾸로' 아이템이 작동할 때 스노우맨의 이동 구현
         {
-            reverseitem.SetActive(true);
+            reverseitem.SetActive(true); //거꾸로 아이템 활성화
             startTime1 += Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
@@ -302,45 +267,57 @@ public class Snowman_Move : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, -90, 0);
                 pos += transform.forward * step;
             }
-            if (startTime1 >= finishTime1)
+            if (startTime1 >= finishTime1) //제한 시간이 끝나면
             {
-                reverseitem.SetActive(false);
-                reverse = false;
+                reverseitem.SetActive(false); //아이템 비활성화
+                reverse = false; //'거꾸로' 아이템 체크 변수를 다시 false로 만들어줌
             }
         }
-        if (time)
+        if (time) //'시간을 거스르는 자' 아이템이 작동할 때 스노우맨의 이동 구현
         {
-            timeagainstitem.SetActive(true);
+            timeagainstitem.SetActive(true); //시간을 거스르는 자 아이템 활성화
             startTime2 += Time.deltaTime;
 
-            GameObject[] objArray = GameObject.FindGameObjectsWithTag("Car");
-            GameObject[] objArray2 = GameObject.FindGameObjectsWithTag("Car2");
+            GameObject[] objArray = GameObject.FindGameObjectsWithTag("Car"); //오른쪽->왼쪽으로 이동하는 차들에 Car 태그 설정
+            GameObject[] objArray2 = GameObject.FindGameObjectsWithTag("Car2"); //왼쪽->오른쪽으로 이동하는 차들에 Car2 태그 설정
 
             for (int i = 0; i < objArray.Length; i++)
-                objArray[i].gameObject.transform.position -= (new Vector3(8, 0, 0) * Time.deltaTime);
+                objArray[i].gameObject.transform.position -= (new Vector3(8, 0, 0) * Time.deltaTime); //Car 태그의 차들을 멈춤
             for (int i = 0; i < objArray2.Length; i++)
-                objArray2[i].gameObject.transform.position += (new Vector3(8, 0, 0) * Time.deltaTime);
+                objArray2[i].gameObject.transform.position += (new Vector3(8, 0, 0) * Time.deltaTime); //Car2 태그의 차들을 멈춤
 
-            if (startTime2 >= finishTime2)
+            if (startTime2 >= finishTime2) //제한 시간이 끝나면
             {
-                timeagainstitem.SetActive(false);
-                time = false;
+                timeagainstitem.SetActive(false); //아이템 비활성화
+                time = false; //'시간을 거스르는 자' 아이템 체크 변수를 다시 false로 만들어줌
             }
         }
 
-        if (pos.x > 10)
+        if (shield) //'실드' 아이템이 작동할 때
+        {
+            shielditem.SetActive(true); //실드 아이템 활성화
+            startTime3 += Time.deltaTime;
+            if (startTime3 >= finishTime3) //제한 시간이 끝나면
+            {
+                shielditem.SetActive(false); //아이템 비활성화
+                shield = false; //'실드' 아이템 체크 변수를 다시 false로 만들어줌
+            }
+        }
+
+        if (pos.x > 10) //맵의 x축 제한범위 설정
             pos.x = 10;
-        if (pos.x < -14)
+        if (pos.x < -14) //맵의 x축 제한범위 설정
             pos.x = -14;
-        if (pos.z < -98)
+        if (pos.z < -98) //맵의 z축 제한범위 설정
             pos.z = -98;
 
-        if (pos.z > 1)
+        if (pos.z > 1) //눈사람이 Finish Line에 도착하면
         {
-            SceneManager.LoadScene("Continue");
+            SceneManager.LoadScene("Continue"); //계속할지를 묻는 씬을 불러옴
             Score_Mng.score += Mathf.FloorToInt(Timer.timelimit);
         }
 
+        //눈사람 이동 효과음 적용
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             audio.Play();
@@ -358,85 +335,86 @@ public class Snowman_Move : MonoBehaviour
             audio.Play();
         }
 
+        //눈사람의 이동에 따른 헬리콥터 위치 변화 설정
         if (gameObject.transform.position.z > -98 && gameObject.transform.position.z < -92)
-            heli.transform.position = new Vector3(0, 8, -90);
+            heli.transform.position = new Vector3(-4.000001f, 8, -90);
         if (gameObject.transform.position.z > -90 && gameObject.transform.position.z < -88)
-            heli.transform.position = new Vector3(0, 8, -86);
+            heli.transform.position = new Vector3(-4.000001f, 8, -86);
         if (gameObject.transform.position.z > -86 && gameObject.transform.position.z < -84)
-            heli.transform.position = new Vector3(0, 8, -82);
+            heli.transform.position = new Vector3(-4.000001f, 8, -82);
         if (gameObject.transform.position.z > -82 && gameObject.transform.position.z < -75)
-            heli.transform.position = new Vector3(0, 8, -73);
+            heli.transform.position = new Vector3(-4.000001f, 8, -73);
         if (gameObject.transform.position.z > -73 && gameObject.transform.position.z < -68)
-            heli.transform.position = new Vector3(0, 8, -66);
+            heli.transform.position = new Vector3(-4.000001f, 8, -66);
         if (gameObject.transform.position.z > -66 && gameObject.transform.position.z < -60)
-            heli.transform.position = new Vector3(0, 8, -58);
+            heli.transform.position = new Vector3(-4.000001f, 8, -58);
         if (gameObject.transform.position.z > -58 && gameObject.transform.position.z < -52)
-            heli.transform.position = new Vector3(0, 8, -50);
+            heli.transform.position = new Vector3(-4.000001f, 8, -50);
         if (gameObject.transform.position.z > -50 && gameObject.transform.position.z < -39)
-            heli.transform.position = new Vector3(0, 8, -37);
+            heli.transform.position = new Vector3(-4.000001f, 8, -37);
         if (gameObject.transform.position.z > -37 && gameObject.transform.position.z < -30)
-            heli.transform.position = new Vector3(0, 8, -28);
+            heli.transform.position = new Vector3(-4.000001f, 8, -28);
         if (gameObject.transform.position.z > -28 && gameObject.transform.position.z < -22)
-            heli.transform.position = new Vector3(0, 8, -20);
+            heli.transform.position = new Vector3(-4.000001f, 8, -20);
         if (gameObject.transform.position.z > -20 && gameObject.transform.position.z < -12)
-            heli.transform.position = new Vector3(0, 8, -10);
+            heli.transform.position = new Vector3(-4.000001f, 8, -10);
         if (gameObject.transform.position.z > -10 && gameObject.transform.position.z < -8)
-            heli.transform.position = new Vector3(0, 8, -6);
+            heli.transform.position = new Vector3(-4.000001f, 8, -6);
         if (gameObject.transform.position.z > -6 && gameObject.transform.position.z < 2)
-            heli.transform.position = new Vector3(0, 8, 0);
-
+            heli.transform.position = new Vector3(-4.000001f, 8, 0);
+        
         transform.position = pos;
     }
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other) //충돌 구현
     {
-        if (other.gameObject.tag == "Car2")
+        if (other.gameObject.tag == "Car2") //Car2 태그가 된 차와 충돌했을 경우
         {
-            car_col = true;
+            car_col = true; //차 충돌 여부 변수를 true로 만들어줌
         }
-        if (other.gameObject.tag == "Car")
+        if (other.gameObject.tag == "Car") //Car 태그가 된 차와 충돌했을 경우
         {
-            car_col = true;
+            car_col = true; //차 충돌 여부 변수를 true로 만들어줌
         }
-        if (other.gameObject.tag == "reverse")
+        if (other.gameObject.tag == "reverse") //'거꾸로'아이템을 먹은 경우
         {
             startTime1 = Time.time;
-            finishTime1 = startTime1 + 3f;
-            reverse = true;
+            finishTime1 = startTime1 + 3f; //3초동안
+            reverse = true; //'거꾸로' 아이템 동작
 
-            Destroy(other.gameObject, 0);
+            Destroy(other.gameObject, 0); //제한 시간 안에 아이템을 먹지 않으면 소멸
 
         }
-        if (other.gameObject.tag == "time")
+        if (other.gameObject.tag == "time") //'시간을 거스르는 자'아이템을 먹은 경우
         {
 
             startTime2 = Time.time;
-            finishTime2 = startTime2 + 3f;
-            time = true;
+            finishTime2 = startTime2 + 3f; //3초동안
+            time = true; //'시간을 거스르는 자' 아이템 동작
 
-            Destroy(other.gameObject, 0);
+            Destroy(other.gameObject, 0); //제한 시간 안에 아이템을 먹지 않으면 소멸
 
         }
-        if (other.gameObject.tag == "shield")
+        if (other.gameObject.tag == "shield") //'실드'아이템을 먹은 경우
         {
             startTime3 = Time.time;
-            finishTime3 = startTime3 + 3f;
-            shield = true;
+            finishTime3 = startTime3 + 3f; //3초동안
+            shield = true; //'실드' 아이템 동작
 
-            Destroy(other.gameObject, 0);
+            Destroy(other.gameObject, 0); //제한 시간 안에 아이템을 먹지 않으면 소멸
         }
-        if (other.gameObject.tag == "bomb")
+        if (other.gameObject.tag == "bomb") //'폭탄'아이템을 먹은 경우
         {
-            SceneManager.LoadScene("GameOver");
-        }
-
-        if (other.gameObject.tag == "hole")
-        {
-            hole_col = true;
+            SceneManager.LoadScene("GameOver"); //게임오버 씬을 불러옴
         }
 
-        if (other.gameObject.tag == "Tree")
+        if (other.gameObject.tag == "hole") //폭탄 터진 구멍과 충돌한 경우
         {
-            tree_col = true;
+            hole_col = true; //구멍 충돌 여부 변수를 true로 만들어줌
+        }
+
+        if (other.gameObject.tag == "Tree") //나무와 충돌한 경우
+        {
+            tree_col = true; //나무 충돌 여부 변수를 true로 만들어줌
 
         }
     }
@@ -448,8 +426,8 @@ public class Snowman_Move : MonoBehaviour
         style.normal.textColor = Color.black;
 
 
-        string str = "      X " + heart;
+        string str = "      X " + heart; //좌측 상단 하트의 개수 표시
 
-        GUI.Label(new Rect(25, 30, 100, 20), str, style);
+        GUI.Label(new Rect(25, 30, 100, 20), str, style); //텍스트 위치, 크기, 색 설정
     }
 }
