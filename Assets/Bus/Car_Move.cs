@@ -7,7 +7,7 @@ public class Car_Move : MonoBehaviour
 {
     public GameObject player;
     Vector3 pos; //자동차의 위치변수
-    float speed; //자동차의 속도변수
+    public float speed; //자동차의 속도변수
     // Start is called before the first frame update
 
     void Start()

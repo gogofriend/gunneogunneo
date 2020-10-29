@@ -15,7 +15,7 @@ public class Snowman_Move : MonoBehaviour
     bool car_col; //차 충돌 여부 확인
     int heart; //생명 개수
     int arrow; //키보드 입력 값 저장
-
+    float speed; // 차 스피드
     float htimer;//깨진하트 타이머
     float startTime1; //아이템 시간 측정용
     float startTime2; //아이템 시간 측정용
@@ -86,6 +86,8 @@ public class Snowman_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Car_Move carmovespeed = GameObject.FindGameObjectWithTag("Car").GetComponent<Car_Move>();
+        speed = carmovespeed.speed;
         htimer += Time.deltaTime; //깨진하트 시간측정용        
 
         if (bh == true) //깨진 하트가 나와야 하면
@@ -282,9 +284,9 @@ public class Snowman_Move : MonoBehaviour
             GameObject[] objArray2 = GameObject.FindGameObjectsWithTag("Car2"); //왼쪽->오른쪽으로 이동하는 차들의 Tag이용하여 오브젝트 배열 저장
 
             for (int i = 0; i < objArray.Length; i++)
-                objArray[i].gameObject.transform.position -= (new Vector3(8, 0, 0) * Time.deltaTime); //Car 태그의 차들을 멈춤
+                objArray[i].gameObject.transform.position -= (new Vector3(speed, 0, 0) * Time.deltaTime); //Car 태그의 차들을 멈춤
             for (int i = 0; i < objArray2.Length; i++)
-                objArray2[i].gameObject.transform.position += (new Vector3(8, 0, 0) * Time.deltaTime); //Car2 태그의 차들을 멈춤
+                objArray2[i].gameObject.transform.position += (new Vector3(speed, 0, 0) * Time.deltaTime); //Car2 태그의 차들을 멈춤
 
             if (startTime2 >= finishTime2) //제한 시간이 끝나면
             {
