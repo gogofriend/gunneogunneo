@@ -13,7 +13,7 @@ public class no2 : MonoBehaviour
     public void onStart()
     {
 
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene("Lobby"); //로비 씬 로드
     }
     // Update is called once per frame
     void Update()

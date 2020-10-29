@@ -14,7 +14,7 @@ public class fourth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreData4.text = PlayerPrefs.GetInt("FourthScore").ToString() + "초";
+        scoreData4.text = PlayerPrefs.GetInt("FourthScore").ToString() + "초"; //4위 데이터 로드
 
     }
 }

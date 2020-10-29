@@ -11,7 +11,7 @@ public class yes2 : MonoBehaviour
     }
     public void onStart()
     {
-        SceneManager.LoadScene("Stage2");
+        SceneManager.LoadScene("Stage2"); //스테이지2 씬 로드
     }
     // Update is called once per frame
     void Update()

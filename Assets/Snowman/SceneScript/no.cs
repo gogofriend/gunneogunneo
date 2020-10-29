@@ -13,7 +13,7 @@ public class no : MonoBehaviour
 
     public void onStart()
     {
-        SceneManager.LoadScene("GameOverCheck");
+        SceneManager.LoadScene("GameOverCheck"); //GameOveCheck 씬으로 이동
     }
 
     // Update is called once per frame

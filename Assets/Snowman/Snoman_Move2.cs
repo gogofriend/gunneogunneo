@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+#pragma warning disable 0108
 public class Snoman_Move2 : MonoBehaviour
 {
     bool bh;  //깨진하트 확인 변수
@@ -41,10 +42,10 @@ public class Snoman_Move2 : MonoBehaviour
     public AudioClip jump; //오디오 점프
 
     public GameObject heli; //헬리콥터 오브젝트
-    public GameObject heartb; //깨진하트 오브젝트
-    public GameObject shielditem; //실드 
-    public GameObject timeagainstitem; //시간을 거스르는자
-    public GameObject reverseitem; //거꾸로
+    public GameObject heartb; //깨진하트 아이콘
+    public GameObject shielditem; //실드 아이콘
+    public GameObject timeagainstitem; //시간을 거스르는자 아이콘
+    public GameObject reverseitem; //거꾸로 아이콘
     // Start is called before the first frame update
     void Start()
     {
@@ -76,15 +77,15 @@ public class Snoman_Move2 : MonoBehaviour
         bh = false; // 하트 안깨진 상태
         htimer = 0.0f; //깨진 하트 보여지는 시간 측정 변수
 
-        heartb = GameObject.Find("heartb"); //깨진하트 오브젝트찾기
-        shielditem = GameObject.Find("shielditem"); //실드 찾기
-        timeagainstitem = GameObject.Find("timeagainstitem"); //시간을거스르는자 찾기
-        reverseitem = GameObject.Find("reverseitem"); //거꾸로 찾기
+        heartb = GameObject.Find("heartb"); //깨진하트아이콘 찾기
+        shielditem = GameObject.Find("shielditem"); //실드아이콘 찾기
+        timeagainstitem = GameObject.Find("timeagainstitem"); //시간을거스르는자아이콘 찾기
+        reverseitem = GameObject.Find("reverseitem"); //거꾸로아이콘 찾기
 
-        heartb.SetActive(false); //깨진하트 안보이게
-        shielditem.SetActive(false); //실드아이템 비활성화
-        timeagainstitem.SetActive(false); //시간을 거스르는 자 아이템 비활성화
-        reverseitem.SetActive(false); //거꾸로 아이템 비활성화
+        heartb.SetActive(false); //깨진하트아이콘 안보이게
+        shielditem.SetActive(false); //실드아이템 아이콘 비활성화
+        timeagainstitem.SetActive(false); //시간을 거스르는 자 아이템 아이콘 비활성화
+        reverseitem.SetActive(false); //거꾸로 아이템 아이콘 비활성화
     }
 
     // Update is called once per frame
@@ -95,10 +96,10 @@ public class Snoman_Move2 : MonoBehaviour
         if (bh == true) //깨진 하트가 나와야 하면
         {
             startTime4 += Time.deltaTime;
-            heartb.SetActive(true); //깨진 하트 활성화
+            heartb.SetActive(true); //깨진 하트 아이콘 활성화
             if (startTime4 >= finishTime4) //깨진 하트가 보여지는 시간이 끝나면
             {
-                heartb.SetActive(false); //깨진 하트 비활성화
+                heartb.SetActive(false); //깨진 하트 아이콘 비활성화
                 bh = false; //깨진 하트체크 변수를 다시 false로 만들어줌
             }
         }
@@ -256,7 +257,7 @@ public class Snoman_Move2 : MonoBehaviour
         }
         if (reverse) //'거꾸로' 아이템이 작동할 때 스노우맨의 이동 구현
         {
-            reverseitem.SetActive(true); //거꾸로 아이템 활성화
+            reverseitem.SetActive(true); //거꾸로 아이템 아이콘 활성화
             startTime1 += Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
@@ -281,17 +282,17 @@ public class Snoman_Move2 : MonoBehaviour
             }
             if (startTime1 >= finishTime1) //제한 시간이 끝나면
             {
-                reverseitem.SetActive(false); //아이템 비활성화
+                reverseitem.SetActive(false); //아이템 아이콘 비활성화
                 reverse = false; //'거꾸로' 아이템 체크 변수를 다시 false로 만들어줌
             }
         }
         if (time) //'시간을 거스르는 자' 아이템이 작동할 때 스노우맨의 이동 구현
         {
-            timeagainstitem.SetActive(true); //시간을 거스르는 자 아이템 활성화
+            timeagainstitem.SetActive(true); //시간을 거스르는 자 아이템 아이콘 활성화
             startTime2 += Time.deltaTime;
 
-            GameObject[] objArray = GameObject.FindGameObjectsWithTag("Car"); //오른쪽->왼쪽으로 이동하는 차들에 Car 태그 설정
-            GameObject[] objArray2 = GameObject.FindGameObjectsWithTag("Car2"); //왼쪽->오른쪽으로 이동하는 차들에 Car2 태그 설정
+            GameObject[] objArray = GameObject.FindGameObjectsWithTag("Car"); //오른쪽->왼쪽으로 이동하는 차들을 Tag를 이용해서 배열 저장
+            GameObject[] objArray2 = GameObject.FindGameObjectsWithTag("Car2"); //왼쪽->오른쪽으로 이동하는 차들의 Tag이용하여 오브젝트 배열 저장
 
             for (int i = 0; i < objArray.Length; i++)
                 objArray[i].gameObject.transform.position -= (new Vector3(8, 0, 0) * Time.deltaTime); //Car 태그의 차들을 멈춤
@@ -300,17 +301,17 @@ public class Snoman_Move2 : MonoBehaviour
 
             if (startTime2 >= finishTime2) //제한 시간이 끝나면
             {
-                timeagainstitem.SetActive(false); //아이템 비활성화
+                timeagainstitem.SetActive(false); //아이템 아이콘 비활성화
                 time = false; //'시간을 거스르는 자' 아이템 체크 변수를 다시 false로 만들어줌
             }
         }
         if (shield) //'실드' 아이템이 작동할 때
         {
-            shielditem.SetActive(true); //실드 아이템 활성화
+            shielditem.SetActive(true); //실드 아이템 아이콘 활성화
             startTime3 += Time.deltaTime;
             if (startTime3 >= finishTime3) //제한 시간이 끝나면
             {
-                shielditem.SetActive(false); //아이템 비활성화
+                shielditem.SetActive(false); //아이템 아이콘 비활성화
                 shield = false;//'실드' 아이템 체크 변수를 다시 false로 만들어줌
             }
         }
@@ -325,8 +326,8 @@ public class Snoman_Move2 : MonoBehaviour
         if (pos.z > 250) //눈사람이 Finish Line에 도착하면
         {
             Score_Mng.score += Mathf.FloorToInt(Timer.timelimit); //게임 시간을 점수에 더함
-            Score_Mng.Save();
-            Load();
+            Score_Mng.Save(); // 점수 데이터를 소팅 후 랭킹에 저장
+            Load(); //랭킹 텍스트 업데이트
             SceneManager.LoadScene("Ranking"); //랭킹 씬을 불러옴
         }
 

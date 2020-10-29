@@ -14,7 +14,7 @@ public class third : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreData3.text = PlayerPrefs.GetInt("ThirdScore").ToString() + "초";
+        scoreData3.text = PlayerPrefs.GetInt("ThirdScore").ToString() + "초"; //3위 데이터 로드
 
     }
 }

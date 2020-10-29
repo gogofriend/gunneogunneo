@@ -55,16 +55,16 @@ public class Helicopter : MonoBehaviour
         {
             if (item3 != null)
             {
-                GameObject Item3 = GameObject.Instantiate(item3); //item2를 복제
+                GameObject Item3 = GameObject.Instantiate(item3); //item3를 복제
                 Item3.transform.position = transform.position; //item의 생성 위치는 헬기의 위치랑 같다
                 Item3.transform.parent = null; //위치 독립
             }
         }
-        if (random == 4) //random이 3이라면
+        if (random == 4) //random이 4라면
         {
             if (item4 != null)
             {
-                GameObject Item4 = GameObject.Instantiate(item4); //item2를 복제
+                GameObject Item4 = GameObject.Instantiate(item4); //item4를 복제
                 Item4.transform.position = transform.position; //item의 생성 위치는 헬기의 위치랑 같다
                 Item4.transform.parent = null; //위치 독립
             }
