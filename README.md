@@ -22,17 +22,18 @@ Trigger 이외의 물리엔진 사용하지 않고 구현하였다.
 ### 📺 게임화면
 
 ------
-- 시작 화면 
+- 로비 화면 
   <p style="text-align: center;">
-    <img src="https://user-images.githubusercontent.com/57933061/125446549-0cf67e87-7e2d-4e9b-a967-caed12aa2bb3.png" width="400" float = "center">
+    <img src="https://user-images.githubusercontent.com/57933061/125460979-36a488b2-9b24-472b-a93a-76ed9d9e9d13.JPG" width="400" float = "center">
   </p>
-- 스테이지1 플레이 화면
+- 플레이 화면
   <p style="text-align: center;">
-    <img src="https://user-images.githubusercontent.com/57933061/125447184-656dace8-07ed-4708-ab80-7684b1042028.png" width="400" float = "center">
+    <img src="https://user-images.githubusercontent.com/57933061/125461037-78b92a14-13ef-4464-acf1-081ee63070ab.JPG![Uploading 3.JPG…]()
+" width="400" float = "center">
   </p>
 - Tab키 클릭 시 카메라 전환 화면
   <p style="text-align: center;">
-    <img src="https://user-images.githubusercontent.com/57933061/125446542-d9519f16-d8bb-4526-90c8-814c750b693d.png" width="400" float = "center">
+    <img src="https://user-images.githubusercontent.com/57933061/125461101-4d2ea808-8e5d-4932-b3d7-1813937ec091.JPG" width="400" float = "center">
   </p>
 
 
@@ -80,7 +81,7 @@ https://github.com/minjuu/gunneogunneo.git
 ### 🌏 실행 영상 (클릭 시 이동)
 
 ------
-[![battleofblood](http://img.youtube.com/vi/VPeROEktXa8/0.jpg)](https://youtu.be/VPeROEktXa8) 
+[![건너건너](http://img.youtube.com/vi/VPeROEktXa8/0.jpg)](https://youtu.be/VPeROEktXa8) 
 
 ------
 
