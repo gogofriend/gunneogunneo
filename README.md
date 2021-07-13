@@ -30,7 +30,7 @@ Trigger 이외의 물리엔진 사용하지 않고 구현하였다.
   <p style="text-align: center;">
     <img src="https://user-images.githubusercontent.com/57933061/125461037-78b92a14-13ef-4464-acf1-081ee63070ab.JPG" width="400" float = "center">
   </p>
-- Tab키 클릭 시 카메라 전환 화면
+- 랭킹 화면
   <p style="text-align: center;">
     <img src="https://user-images.githubusercontent.com/57933061/125461101-4d2ea808-8e5d-4932-b3d7-1813937ec091.JPG" width="400" float = "center">
   </p>
