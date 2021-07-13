@@ -28,8 +28,7 @@ Trigger 이외의 물리엔진 사용하지 않고 구현하였다.
   </p>
 - 플레이 화면
   <p style="text-align: center;">
-    <img src="https://user-images.githubusercontent.com/57933061/125461037-78b92a14-13ef-4464-acf1-081ee63070ab.JPG![Uploading 3.JPG…]()
-" width="400" float = "center">
+    <img src="https://user-images.githubusercontent.com/57933061/125461037-78b92a14-13ef-4464-acf1-081ee63070ab.JPG" width="400" float = "center">
   </p>
 - Tab키 클릭 시 카메라 전환 화면
   <p style="text-align: center;">
