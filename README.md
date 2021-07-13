@@ -71,7 +71,7 @@ Trigger 이외의 물리엔진 사용하지 않고 구현하였다.
 
 ------
 
-https://github.com/gogofriend/gunneogunneo.git
+https://github.com/gogofriend/gunneogunneo.git<br>
 
 
 ### 🌏 실행 영상 (클릭 시 이동)
